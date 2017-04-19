@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BE14A9AC1E9CB706000A96EF /* LTDlibLandmarksHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14A9AB1E9CB706000A96EF /* LTDlibLandmarksHandler.m */; };
 		BE14A9AF1E9CDA26000A96EF /* PBInfoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14A9AE1E9CDA26000A96EF /* PBInfoAlert.m */; };
+		BE3440731EA334A6000AC33B /* LTNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3440721EA334A6000AC33B /* LTNumberFormatter.m */; };
 		BE75D5101E9B4CC000C04706 /* LTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE75D50E1E9B4CC000C04706 /* LTDetailsViewController.m */; };
 		BE75D5141E9B4CE200C04706 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE75D5131E9B4CE200C04706 /* CoreGraphics.framework */; };
 		BE75D5181E9B4D3900C04706 /* LTDetailsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE75D5161E9B4D3900C04706 /* LTDetailsImageView.m */; };
@@ -26,7 +27,7 @@
 		FAA49A901D76E7FF0029014B /* OnlyIntegerValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA49A8F1D76E7FF0029014B /* OnlyIntegerValueFormatter.m */; };
 		FAE817821D659C4400088D85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE817811D659C4400088D85 /* AppDelegate.m */; };
 		FAE817851D659C4400088D85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE817841D659C4400088D85 /* main.m */; };
-		FAE817881D659C4400088D85 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE817871D659C4400088D85 /* ViewController.m */; };
+		FAE817881D659C4400088D85 /* LTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE817871D659C4400088D85 /* LTTestViewController.m */; };
 		FAE8178A1D659C4400088D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE817891D659C4400088D85 /* Assets.xcassets */; };
 		FAE8178D1D659C4400088D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE8178B1D659C4400088D85 /* Main.storyboard */; };
 		FAE817981D659C4400088D85 /* XMLMaskTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE817971D659C4400088D85 /* XMLMaskTestTests.m */; };
@@ -56,6 +57,8 @@
 		BE14A9AB1E9CB706000A96EF /* LTDlibLandmarksHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDlibLandmarksHandler.m; sourceTree = "<group>"; };
 		BE14A9AD1E9CDA26000A96EF /* PBInfoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInfoAlert.h; sourceTree = "<group>"; };
 		BE14A9AE1E9CDA26000A96EF /* PBInfoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBInfoAlert.m; sourceTree = "<group>"; };
+		BE3440711EA334A6000AC33B /* LTNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTNumberFormatter.h; sourceTree = "<group>"; };
+		BE3440721EA334A6000AC33B /* LTNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTNumberFormatter.m; sourceTree = "<group>"; };
 		BE75D50D1E9B4CC000C04706 /* LTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDetailsViewController.h; sourceTree = "<group>"; };
 		BE75D50E1E9B4CC000C04706 /* LTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDetailsViewController.m; sourceTree = "<group>"; };
 		BE75D5131E9B4CE200C04706 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,8 +89,8 @@
 		FAE817801D659C4400088D85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAE817811D659C4400088D85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FAE817841D659C4400088D85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAE817861D659C4400088D85 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FAE817871D659C4400088D85 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FAE817861D659C4400088D85 /* LTTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTTestViewController.h; sourceTree = "<group>"; };
+		FAE817871D659C4400088D85 /* LTTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTTestViewController.m; sourceTree = "<group>"; };
 		FAE817891D659C4400088D85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAE8178C1D659C4400088D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAE8178E1D659C4400088D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +140,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BEA7D1C31E9E20FE00CF072A /* AppDelegateView */ = {
+			isa = PBXGroup;
+			children = (
+				FA61BC2D1D72C295009EE164 /* leopard.png */,
+				FA61BC2E1D72C295009EE164 /* leopard.xml */,
+				FAE817801D659C4400088D85 /* AppDelegate.h */,
+				FAE817811D659C4400088D85 /* AppDelegate.m */,
+				FAE817891D659C4400088D85 /* Assets.xcassets */,
+				FAE8178B1D659C4400088D85 /* Main.storyboard */,
+				FAE8178E1D659C4400088D85 /* Info.plist */,
+			);
+			name = AppDelegateView;
+			sourceTree = "<group>";
+		};
+		BEA7D1C41E9E211000CF072A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAE817861D659C4400088D85 /* LTTestViewController.h */,
+				FAE817871D659C4400088D85 /* LTTestViewController.m */,
+				BE75D50D1E9B4CC000C04706 /* LTDetailsViewController.h */,
+				BE75D50E1E9B4CC000C04706 /* LTDetailsViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		FAE817741D659C4400088D85 = {
 			isa = PBXGroup;
 			children = (
@@ -162,17 +190,8 @@
 		FAE8177F1D659C4400088D85 /* XMLMaskTest */ = {
 			isa = PBXGroup;
 			children = (
-				FA61BC2D1D72C295009EE164 /* leopard.png */,
-				FA61BC2E1D72C295009EE164 /* leopard.xml */,
-				FAE817801D659C4400088D85 /* AppDelegate.h */,
-				FAE817811D659C4400088D85 /* AppDelegate.m */,
-				FAE817861D659C4400088D85 /* ViewController.h */,
-				FAE817871D659C4400088D85 /* ViewController.m */,
-				BE75D50D1E9B4CC000C04706 /* LTDetailsViewController.h */,
-				BE75D50E1E9B4CC000C04706 /* LTDetailsViewController.m */,
-				FAE817891D659C4400088D85 /* Assets.xcassets */,
-				FAE8178B1D659C4400088D85 /* Main.storyboard */,
-				FAE8178E1D659C4400088D85 /* Info.plist */,
+				BEA7D1C31E9E20FE00CF072A /* AppDelegateView */,
+				BEA7D1C41E9E211000CF072A /* ViewController */,
 				FAE817831D659C4400088D85 /* Supporting Files */,
 			);
 			path = XMLMaskTest;
@@ -206,6 +225,8 @@
 				BE75D51D1E9B65F400C04706 /* LTStaticImageDrawing.m */,
 				BE14A9AA1E9CB706000A96EF /* LTDlibLandmarksHandler.h */,
 				BE14A9AB1E9CB706000A96EF /* LTDlibLandmarksHandler.m */,
+				BE3440711EA334A6000AC33B /* LTNumberFormatter.h */,
+				BE3440721EA334A6000AC33B /* LTNumberFormatter.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -365,6 +386,7 @@
 				FA6841281D7694B9004F1A0B /* NSView+APForwardDraggingDestination.m in Sources */,
 				BE75D5101E9B4CC000C04706 /* LTDetailsViewController.m in Sources */,
 				FA3685DF1D7AA798006998AC /* LandmaskXMLParser.m in Sources */,
+				BE3440731EA334A6000AC33B /* LTNumberFormatter.m in Sources */,
 				FA31CC901D65A92600F90AA0 /* FaceMaskCategories.m in Sources */,
 				BE75D51E1E9B65F400C04706 /* LTStaticImageDrawing.m in Sources */,
 				FA31CC921D65A92600F90AA0 /* FaceLandmarks.m in Sources */,
@@ -373,7 +395,7 @@
 				FAA49A8D1D76BA260029014B /* DragDropImageView.m in Sources */,
 				FAA49A901D76E7FF0029014B /* OnlyIntegerValueFormatter.m in Sources */,
 				BE75D5181E9B4D3900C04706 /* LTDetailsImageView.m in Sources */,
-				FAE817881D659C4400088D85 /* ViewController.m in Sources */,
+				FAE817881D659C4400088D85 /* LTTestViewController.m in Sources */,
 				FAE817851D659C4400088D85 /* main.m in Sources */,
 				FAE817821D659C4400088D85 /* AppDelegate.m in Sources */,
 				BE14A9AF1E9CDA26000A96EF /* PBInfoAlert.m in Sources */,

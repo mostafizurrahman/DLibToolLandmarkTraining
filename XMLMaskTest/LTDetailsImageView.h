@@ -11,6 +11,13 @@
 #import "Landmarks.h"
 #import "FaceLandmarks.h"
 
+
+@protocol OnLandamarkClicked <NSObject>
+
+-(void)landmarkClickedAtPoint:(NSPoint)clickedPoint;
+
+@end
+
 @interface LTDetailsImageView : IKImageView
 
 -(void)zoomImage:(NSUInteger)zoom;
@@ -18,7 +25,18 @@
 -(void)updateImage:(CGImageRef)inputImageRef;
 -(void)loadFaceLanmark:(NSString *)filePath;
 -(void)updateLandmark;
+-(void)loadNextImage;
+-(void)deleteImage;
+-(void)updateIndex:(int)value;
+-(CGSize)getSize;
+-(void)changeCursor;
+-(BOOL)isIndexOutOfBound:(NSUInteger)index;
+-(void)jumpToIndex:(NSUInteger)index;
+-(FaceLandmarks *)getCurrentFaceLandmark;
+-(NSUInteger)getCurrentIndex;
+
+@property (readwrite) BOOL shouldDragImage;
 @property (readwrite) FaceLandmarks *faceLandmarks;
-
-
+@property (readwrite) NSTextField *resolutionLabel;
+@property (readwrite, weak) id<OnLandamarkClicked> clickedDelegate;
 @end

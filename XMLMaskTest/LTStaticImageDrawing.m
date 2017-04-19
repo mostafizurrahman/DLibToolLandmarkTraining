@@ -19,7 +19,7 @@
     if (!numObjects) {
         return nil;
     }
-    NSRect imgRect = NSMakeRect(0.0, 0.0, height, height);
+    NSRect imgRect = NSMakeRect(0.0, 0.0, width, height);
     NSSize imgSize = imgRect.size;
     __block NSBitmapImageRep *offscreenRep = [[NSBitmapImageRep alloc]
                                               initWithBitmapDataPlanes:NULL
@@ -40,6 +40,11 @@
     CFRetain(contextRef);
     if (sampleType == 0 || sampleType == 1) {
         CGImageSourceRef source;
+     
+        if(!faceLandmarks.inputImage)
+        {
+            faceLandmarks.inputImage = [[NSImage alloc] initWithContentsOfFile:faceLandmarks.maskImageName];
+        }
         CFDataRef cfdRef = (__bridge CFDataRef)[faceLandmarks.inputImage TIFFRepresentation];
         source = CGImageSourceCreateWithData(cfdRef, NULL);
         CGImageRef imgRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
@@ -48,44 +53,55 @@
         CFRelease(cfdRef);
         source = NULL;
     }
-    int i;
     CGFontRef font = CGFontCreateWithFontName((CFStringRef)@"Courier Bold");
-    CGContextSetFont ( contextRef, font );
-    for (i = 0; i < numObjects; i++)
+    [[NSColor magentaColor] setStroke];
+    CGContextSetFont(contextRef, font);
+   
+    for (int i = 0; i < numObjects; i++)
     {
         [graphicsContext saveGraphicsState];
         Landmarks *faceLandmarks = [landmarksArray objectAtIndex:i];
         if (faceLandmarks.isEdited) {
             CGContextSetLineWidth(contextRef, 2.5); // set the line width
             CGContextSetRGBStrokeColor(contextRef, 255, 101.0 / 255.0, 18.0 / 255.0, 1.0);
-            CGContextAddArc(contextRef, faceLandmarks.xCoodinate, height - faceLandmarks.yCoodinate, 10, -3.1416, 3.1416, 0); // create an arc the +4 just adds some pixels because of the polygon line thickness
+            CGContextAddArc(contextRef, faceLandmarks.xCoodinate,height - faceLandmarks.yCoodinate, 10, -3.1416, 3.1416, 0); // create an arc the +4 just adds some pixels because of the polygon line thickness
             CGContextStrokePath(contextRef);
+            NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:25], NSFontAttributeName,textColor, NSForegroundColorAttributeName, nil];
+            NSAttributedString * currentText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld",(long)faceLandmarks.landmarkIndex] attributes: attributes];
+            [currentText drawAtPoint:NSMakePoint(faceLandmarks.xCoodinate, height - faceLandmarks.yCoodinate)];
             //            faceLandmarks.isEdited = false;
         }
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:13], NSFontAttributeName,textColor, NSForegroundColorAttributeName, nil];
-        NSAttributedString * currentText=[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld",(long)faceLandmarks.landmarkIndex] attributes: attributes];
-        [currentText drawAtPoint:NSMakePoint(faceLandmarks.xCoodinate, height - faceLandmarks.yCoodinate)];
+        else if(sampleType == 1){
+            NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:25], NSFontAttributeName, textColor, NSForegroundColorAttributeName, nil];
+            NSAttributedString *currentText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld",(long)faceLandmarks.landmarkIndex] attributes: attributes];
+            [currentText drawAtPoint:NSMakePoint(faceLandmarks.xCoodinate, height - faceLandmarks.yCoodinate)];
+        }
         [graphicsContext restoreGraphicsState];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y:faceLandmarks.yCoodinate];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+1 y:faceLandmarks.yCoodinate+1];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-1 y:faceLandmarks.yCoodinate-1];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+1 y:faceLandmarks.yCoodinate-1];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-1 y:faceLandmarks.yCoodinate+1];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y:faceLandmarks.yCoodinate+1];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-1 y:faceLandmarks.yCoodinate];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+1 y:faceLandmarks.yCoodinate];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y:faceLandmarks.yCoodinate-1];
-        
-        
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+2 y:faceLandmarks.yCoodinate+2];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-2 y:faceLandmarks.yCoodinate-2];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+2 y:faceLandmarks.yCoodinate-2];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-2 y:faceLandmarks.yCoodinate+2];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y:faceLandmarks.yCoodinate+2];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-2 y:faceLandmarks.yCoodinate];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+2 y:faceLandmarks.yCoodinate];
-        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y:faceLandmarks.yCoodinate-2];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y: faceLandmarks.yCoodinate];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+1 y: faceLandmarks.yCoodinate+1];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-1 y: faceLandmarks.yCoodinate-1];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+1 y: faceLandmarks.yCoodinate-1];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-1 y: faceLandmarks.yCoodinate+1];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y: faceLandmarks.yCoodinate+1];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate-1 y: faceLandmarks.yCoodinate];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate+1 y: faceLandmarks.yCoodinate];
+        [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y: faceLandmarks.yCoodinate-1];
     }
+    CGContextBeginPath(contextRef);
+    CGContextMoveToPoint(contextRef, faceLandmarks.box.left, height - faceLandmarks.box.top);
+    
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left + faceLandmarks.box.width,
+                            height - faceLandmarks.box.top);
+    
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left + faceLandmarks.box.width,
+                            height - faceLandmarks.box.height - faceLandmarks.box.top );
+    
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left,
+                            height - faceLandmarks.box.height - faceLandmarks.box.top);
+    
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left, height - faceLandmarks.box.top);
+    CGContextClosePath(contextRef);
+    CGContextStrokePath(contextRef);
     [NSGraphicsContext restoreGraphicsState];
     CFRelease(contextRef);
     NSImage *img = [[NSImage alloc] initWithSize:imgSize] ;

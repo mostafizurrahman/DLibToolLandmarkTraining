@@ -14,9 +14,11 @@
 
 @property (readwrite) LTDetailsImageView *detailsView;
 @property (readonly)     NSMutableArray *trainMaskArray;
+@property (readwrite) NSInteger currentFaceIndex;
 
 
 -(instancetype)initWithFilePath:(NSString *)filePath;
 -(BOOL)updateTrainFile;
+-(void)deleteImage;
 
 @end

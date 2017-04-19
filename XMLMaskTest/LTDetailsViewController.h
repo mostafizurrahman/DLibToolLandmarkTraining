@@ -13,13 +13,17 @@
 #import "NSView+APForwardDraggingDestination.h"
 
 
-@interface LTDetailsViewController : NSViewController<NSDraggingDestination>
+@interface LTDetailsViewController : NSViewController<NSDraggingDestination, OnLandamarkClicked,NSTextFieldDelegate>
 @property (weak) IBOutlet LTDetailsImageView *detailsImageView;
 @property (readwrite) NSString *imagePath;
 @property (readwrite) FaceLandmarks *faceLandmark;
 @property (weak) IBOutlet NSButton *backgroundCheckbox;
 @property (readwrite) NSImage *inputImage;
+@property (weak) IBOutlet NSTextField *resolutionLabel;
+@property (weak) IBOutlet NSTextField *filePathTextField;
 
-@property (weak) IBOutlet NSLayoutConstraint *bottomSpace;
+@property (weak) IBOutlet NSLayoutConstraint *topSpaceConstraint;
+@property (weak) IBOutlet NSTextField *indexTextField;
+@property (weak) IBOutlet NSTextField *locationTextField;
 
 @end

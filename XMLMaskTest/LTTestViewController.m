@@ -7,7 +7,7 @@
 //  Copyright © 2016 Mostafizur Rahman. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LTTestViewController.h"
 #import <Cocoa/Cocoa.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "AppDelegate.h"
@@ -366,8 +366,7 @@ void* const ColorPanelColorContext = (void*)1001;
         if([_xmlTextField.stringValue containsString:@"json"] || [_xmlTextField.stringValue containsString:@"csv"]){
             xml = [self getXmlString:xml];
         }
-        [xmlparser loadRssFeed:xml];
-        
+        [xmlparser loadRssFeed:xml];        
     }
 }
 
@@ -401,8 +400,6 @@ void* const ColorPanelColorContext = (void*)1001;
         isProcessing = NO;
     }
 }
-
-
 
 - (void)highlightTextFiled:(NSTextField *)textFiled isHighlited:(BOOL)highlight
 {

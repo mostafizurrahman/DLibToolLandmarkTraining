@@ -17,6 +17,7 @@
 @interface FaceLandmarks : NSObject
 
 @property (readwrite) FaceRect *box;
+@property (readwrite) NSPoint editPoint;
 @property (readwrite) NSInteger landmarksCount;
 @property (readwrite) NSInteger maskHeight;
 @property (readwrite) NSInteger maskWidth;
