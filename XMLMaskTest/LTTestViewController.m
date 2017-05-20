@@ -104,7 +104,6 @@ void* const ColorPanelColorContext = (void*)1001;
     [panel setAllowedFileTypes:fileTypes];
     [panel beginSheetModalForWindow:[self.view window] completionHandler:^(NSModalResponse returnCode) {
         
-        
         if (returnCode == NSFileHandlingPanelOKButton)
         {
             for (NSURL *url in [panel URLs])
