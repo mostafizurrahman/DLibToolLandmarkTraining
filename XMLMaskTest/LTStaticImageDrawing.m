@@ -88,18 +88,21 @@
         [offscreenRep setColor:dotColor atX:faceLandmarks.xCoodinate y: faceLandmarks.yCoodinate-1];
     }
     CGContextBeginPath(contextRef);
-    CGContextMoveToPoint(contextRef, faceLandmarks.box.left, height - faceLandmarks.box.top);
     
-    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left + faceLandmarks.box.width,
-                            height - faceLandmarks.box.top);
+    float topBox = (float)height - (float)faceLandmarks.box.top;
+    float bottomHeight = (float)height - (float)faceLandmarks.box.height - (float)faceLandmarks.box.top;
     
-    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left + faceLandmarks.box.width,
-                            height - faceLandmarks.box.height - faceLandmarks.box.top );
     
-    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left,
-                            height - faceLandmarks.box.height - faceLandmarks.box.top);
     
-    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left, height - faceLandmarks.box.top);
+    
+    CGContextMoveToPoint(contextRef, faceLandmarks.box.left, topBox);
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left + faceLandmarks.box.width, topBox);
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left + faceLandmarks.box.width, bottomHeight );
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left, bottomHeight);
+    CGContextAddLineToPoint(contextRef, faceLandmarks.box.left, topBox);
+    
+    
+    
     CGContextClosePath(contextRef);
     CGContextStrokePath(contextRef);
     [NSGraphicsContext restoreGraphicsState];

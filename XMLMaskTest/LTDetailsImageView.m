@@ -48,6 +48,7 @@
 
 -(void)loadFaceLanmark:(NSString *)filePath {
     landmarkHandler = [[LTDlibLandmarksHandler alloc] initWithFilePath:filePath];
+    self.error = landmarkHandler.error;
     landmarkHandler.currentFaceIndex = 0;
    
 }
@@ -65,10 +66,17 @@
     return [landmarkHandler.trainMaskArray objectAtIndex:landmarkHandler.currentFaceIndex];
 }
 
+-(void)deleteLandmark {
+    [landmarkHandler deleteLandmark];
+}
+
 -(CGSize)getSize{
     return imageSize;
 }
 
+-(void)deleteLandmarkRandomly:(int)deleteCount {
+    [landmarkHandler deleteLandmarkRandmoly:deleteCount];
+}
 
 -(void)zoomImage:(NSUInteger)zoom
 {
@@ -110,6 +118,10 @@
 
 -(void)jumpToIndex:(NSUInteger)index{
     landmarkHandler.currentFaceIndex = index;
+}
+
+-(void)deleteImage:(int)landmarkCount {
+    [landmarkHandler deleteLandmarkRandmoly:landmarkCount];
 }
 
 -(NSUInteger)getCurrentIndex {

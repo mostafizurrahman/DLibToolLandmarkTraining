@@ -29,7 +29,6 @@
     faceLandmarks = [[FaceLandmarks alloc] init];
     landmarkArray =  [[NSMutableArray alloc] init];
     
-    
     xml = [xml stringByReplacingOccurrencesOfString:@"”" withString:@"\""];
     xml = [xml stringByReplacingOccurrencesOfString:@"“" withString:@"\""];
     xmlParser = [[NSXMLParser alloc] initWithData:[xml dataUsingEncoding:NSUTF8StringEncoding]];

@@ -9,13 +9,16 @@
 #import "LTDlibLandmarksHandler.h"
 #import "FaceLandmarks.h"
 #import "PBInfoAlert.h"
-
+#import "FDMaskXmlParser.h"
+#import "NSMutableArray+QueueStack.h"
 
 @interface LTDlibLandmarksHandler() {
     NSString *singleImageString;
-
+    NSMutableArray *imageUrlArray;
     NSString *rootDirectory;
     NSFileManager *fileManager;
+    int indexOffset;
+    BOOL isFaceLandmark;
 }
 
 @end
@@ -28,6 +31,7 @@
     
     self = [super init];
     if(self){
+        isFaceLandmark = NO;
         rootDirectory = [filePath stringByDeletingLastPathComponent];
         fileManager = [NSFileManager defaultManager];
         [self readImageStringParts:filePath];
@@ -38,97 +42,124 @@
 #pragma -mark Generate FaceLandmark for Each Human Face
 -(void)readImageStringParts:(NSString *)filePath{
     NSError *error;
-    NSURL *rootDirURL = [[NSURL alloc] initFileURLWithPath:rootDirectory isDirectory:YES];
-    
-    NSString *inputString = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSISOLatin2StringEncoding error:&error];
+    NSMutableString *inputString = [NSMutableString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding  error:&error];
     if(!error){
-        inputString = [inputString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        inputString = [inputString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-        inputString = [inputString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-        inputString = [inputString stringByReplacingOccurrencesOfString:@" " withString:@""];
-        NSArray *inputStringArray = [inputString componentsSeparatedByString:@"</comment>"];
-        inputString = [inputStringArray lastObject];
-        NSArray *array = [inputString componentsSeparatedByString:@"</image>"];
-        inputString = [self getSubstringBetween:@"<images>" andEndString:@"</images>" fromString:&inputString];
-        NSString *imageString = [self getSubstringBetween:@"<image" andEndString:@"</image>" fromString:&inputString];
+        
         trainMaskArray = [[NSMutableArray alloc] init];
-        long indexing = 0;
-        while(imageString){
-            NSString *imagePath = [self getSubstringBetween:@"file='" andEndString:@"'>" fromString:&imageString];
-            if(imagePath) {
-                imagePath = [rootDirectory stringByAppendingPathComponent:imagePath];
-                NSURL *imageUrl = [[NSURL alloc] initFileURLWithPath:imagePath isDirectory:NO];
-                
-                if(![fileManager fileExistsAtPath:imageUrl.path isDirectory:NO])
-                    continue;
-//                else {
-//                    NSString *newPath = [[imagePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[NSString stringWithFormat:@"moni_%ld.%@", indexing++,imageUrl.pathExtension]];
-//                    if([fileManager moveItemAtPath:imagePath toPath:newPath error:&error]){
-//                        imagePath = newPath;
-//                        NSLog(@"renamed");
-//                    }
-//                }
-                BOOL shouldIncludeFace = YES;
-                NSArray *boxArray = [imageString componentsSeparatedByString:@"</box>"];
-                for(NSString *boxString in boxArray){
-                    if([boxString containsString:@"part"]){
-                        FaceLandmarks *faceLandmark = [[FaceLandmarks alloc] init];
-                        shouldIncludeFace = [self setLandmark:faceLandmark withString:boxString];
-                        if(!shouldIncludeFace)
-                        {
-                            continue;
-                        }
-                        faceLandmark.maskImageName = imagePath;
-                        [trainMaskArray addObject:faceLandmark];
-                    }
-                }                
+        NSArray *imageArray = [inputString componentsSeparatedByString:@"</image>"];
+        isFaceLandmark = [imageArray count] <= 1;
+        if(isFaceLandmark){
+            FaceLandmarks *facelandmark = [FDMaskXmlParser getLandmarks:filePath withError:&error];
+            if(!error) {
+                facelandmark.maskImageName = [rootDirectory stringByAppendingPathComponent:facelandmark.maskImageName];
+                [trainMaskArray addObject:facelandmark];
             }
-            imageString = [self getSubstringBetween:@"<image" andEndString:@"</image>" fromString:&inputString];
+        }
+        else
+        {
+            for(NSMutableString *imgString in imageArray)
+            {
+                NSMutableString *imageString = (NSMutableString *)[imgString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                imageString = (NSMutableString *)[imageString stringByReplacingOccurrencesOfString:@" " withString:@""];
+                imageString = (NSMutableString *)[imageString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+                imageString = (NSMutableString *)[imageString stringByReplacingOccurrencesOfString:@"\"" withString:@"'"];
+                if(![imageString containsString:@"<imagefile='"]) continue;
+                indexOffset = [imageString containsString:@"name='0'"] || [imageString containsString:@"name='00'"] ? 0 : 1;
+                NSString *imagePath = [self getSubstringBetween:@"<imagefile='" andEndString:@"'>" fromString:&imageString];
+                if(imagePath)
+                {
+                    imagePath = [rootDirectory stringByAppendingPathComponent:imagePath];
+                    NSURL *imageUrl = [[NSURL alloc] initFileURLWithPath:imagePath isDirectory:NO];
+                    if(![fileManager fileExistsAtPath:imageUrl.path isDirectory:NO])
+                        continue;
+                    NSArray *boxsArray = [imageString componentsSeparatedByString:@"</box>"];
+                    for(NSString *string in boxsArray)
+                    {
+                        if(![string containsString:@"<box"]) continue;
+                        BOOL shouldIncludeFace = YES;
+                        if([string containsString:@"part"])
+                        {
+                            FaceLandmarks *faceLandmark = [[FaceLandmarks alloc] init];
+                            shouldIncludeFace = [self setLandmark:faceLandmark withString:string];
+                            if(!shouldIncludeFace)
+                            {
+                                continue;
+                            }
+                            faceLandmark.maskImageName = imagePath;
+                            [trainMaskArray addObject:faceLandmark];
+                        }
+                    }
+                }
+            }
+            if([trainMaskArray count ] == 0){
+                self.error = [[NSError alloc] initWithDomain:NSCocoaErrorDomain code:1010 userInfo:@{@"Reason":@"No Image found!!! check input xml"}];
+            }
         }
     }
-//    NSArray *allImageArray  = [fileManager contentsOfDirectoryAtURL:rootDirURL
-//                                         includingPropertiesForKeys:nil
-//                                                            options:(NSDirectoryEnumerationSkipsHiddenFiles)
-//                                                              error:&error];
-//    for(NSURL *path  in allImageArray)
-//    {
-//        for(FaceLandmarks *faceLandmark in trainMaskArray)
-//        {
-//            NSLog(@"%@", faceLandmark.maskImageName.lastPathComponent);
-//            if(![path.path containsString: faceLandmark.maskImageName.lastPathComponent]){
-//                if([fileManager removeItemAtURL:path error:&error]){
-//                    [trainMaskArray removeObject:faceLandmark];
-//                    NSLog(@"removed");
-//                }
-//                else {
-//                    NSLog(@"%@",error.userInfo);
-//                }
-//                break;
-//            }
-//        }
-//    }
+    if(!self.error)
+    self.error = error;
+}
+
+
+-(void)getFileListFromURL:(NSURL *)rootDirUrl {
+    imageUrlArray = [[NSMutableArray alloc] init];
+    NSMutableArray *stackArray = [[NSMutableArray alloc] init];
+    NSError *error = nil;
+    NSArray *rootSubdirectoryArray = [self getSubdirectoriesFromURL:rootDirUrl withError:&error];
+    [self setUrlList:rootSubdirectoryArray withStack:stackArray];
+    while(!stackArray.empty) {
+        NSURL *fileURL = [stackArray pop];
+        NSArray *subdirectoryArray = [self getSubdirectoriesFromURL:fileURL withError:&error];
+        for(NSURL *url in subdirectoryArray){
+            if([@"jpgjpeg" containsString:url.pathExtension.lowercaseString ]){
+                [imageUrlArray addObject:url];
+            }
+        }
+    }
+}
+
+-(NSArray *)getSubdirectoriesFromURL:(NSURL *)rootDirURL
+                           withError:(NSError *__autoreleasing*)error {
+    return [fileManager contentsOfDirectoryAtURL:rootDirURL
+                      includingPropertiesForKeys:nil
+                                         options:(NSDirectoryEnumerationSkipsHiddenFiles)
+                                           error:error];
+}
+
+-(void)setUrlList:(NSArray const *)array
+        withStack:(NSMutableArray *)stackArray {
+    for(NSURL *fileUrl in array) {
+        if ([self isDirectoryUrl:fileUrl]) {
+            [stackArray addObject:fileUrl];
+        }
+    }
+}
+
+-(BOOL)isDirectoryUrl:(NSURL *)url {
+    NSNumber *isDirectory;
+    BOOL success = [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
+    return success && [isDirectory boolValue];
 }
 
 -(BOOL)setLandmark:(FaceLandmarks *)faceLandmark withString:(NSString *)imageString{
     
     NSString *boxString = [self getSubstringBetween:@"box" andEndString:@">" fromString:&imageString];
     faceLandmark.box = [[FaceRect alloc] init];
-    faceLandmark.box.top = [[self getSubstringBetween:@"top='" andEndString:@"'" fromString:&boxString] integerValue];
-    faceLandmark.box.left = [[self getSubstringBetween:@"left='" andEndString:@"'" fromString:&boxString] integerValue];
-    faceLandmark.box.width = [[self getSubstringBetween:@"width='" andEndString:@"'" fromString:&boxString] integerValue];
-    if(faceLandmark.box.width < 200) return NO;
-    faceLandmark.box.height = [[self getSubstringBetween:@"height='" andEndString:@"'" fromString:&boxString] integerValue];
+    faceLandmark.box.top = [self getAttributeFrom:boxString withAttributeName:@"top='"];
+    faceLandmark.box.left = [self getAttributeFrom:boxString withAttributeName:@"left='"];
+    faceLandmark.box.width = [self getAttributeFrom:boxString withAttributeName:@"width='"];
+    faceLandmark.box.height = [self getAttributeFrom:boxString withAttributeName:@"height='"];
     NSArray *partsArray = [imageString componentsSeparatedByString:@"<part"];
-    faceLandmark.landmarksArray = [[NSMutableArray alloc] initWithCapacity:LANDMARK_COUNT];
+    faceLandmark.landmarksArray = [[NSMutableArray alloc] init];
     
-    for(NSUInteger index = 0; index < partsArray.count; index++ ){
+    for(NSUInteger index = 0; index < partsArray.count; index++) {
         NSString *part = [partsArray objectAtIndex:index];
         if(![part containsString:@"name"]) continue;
-        NSInteger landmarkIndex = [[self getSubstringBetween:@"name='" andEndString:@"'" fromString:&part] integerValue] - 1;
+        NSInteger landmarkIndex = [[self getSubstringBetween:@"name='" andEndString:@"'" fromString:&part] integerValue];
         NSInteger xCoordinate = [[self getSubstringBetween:@"x='" andEndString:@"'" fromString:&part] integerValue];
         NSInteger yCoordinate = [[self getSubstringBetween:@"y='" andEndString:@"'" fromString:&part] integerValue];
-        Landmarks *landmark = [[Landmarks alloc] initWith:landmarkIndex xCoord:xCoordinate yCoord:yCoordinate];
-        [faceLandmark.landmarksArray insertObject:landmark atIndex:landmarkIndex];
+        Landmarks *landmark = [[Landmarks alloc] initWith:(landmarkIndex - indexOffset) xCoord:xCoordinate yCoord:yCoordinate];
+        [faceLandmark.landmarksArray addObject:landmark];
     }
     return YES;
 }
@@ -165,12 +196,36 @@
 #pragma -mark Upadet train xml
 
 -(BOOL)updateTrainFile{
+    
     NSMutableString *outputString = [[NSMutableString alloc] init];
+    if(isFaceLandmark){
+        FaceLandmarks *facelandmark = [trainMaskArray firstObject];
+        [outputString appendString:@"<?xml version=\"1.0\"?>\n"
+         "<masklandmark>\n"
+         "<mask_resolution>\n"
+         "<width>512</width>\n"
+         "<height>512</height>\n"
+         "</mask_resolution>\n"];
+        [outputString appendString:[NSString stringWithFormat:@"<mask_title>%@</mask_title>\n", facelandmark.maskTitle]];
+        [outputString appendString:[NSString stringWithFormat:@"<mask_image_name>%@</mask_image_name>\n", [facelandmark.maskImageName lastPathComponent]]];
+        [outputString appendString:[NSString stringWithFormat:@"<landmarks_count>%ld</landmarks_count>\n<landmarks>\n", facelandmark.landmarksArray.count]];
+        for(long partIndex = 0; partIndex < facelandmark.landmarksArray.count; partIndex++){
+            [outputString appendString:[self getLandmarkString:[facelandmark.landmarksArray objectAtIndex:partIndex]]];
+        }
+        [outputString appendString:@"\t</landmarks>\n</masklandmark>"];
+        
+        NSData *xmlData = [[NSData alloc ] initWithBytes:outputString.UTF8String length:outputString.length];
+        
+        return [xmlData writeToFile:[rootDirectory stringByAppendingPathComponent:
+                                     [NSString stringWithFormat:@"face_landmark_%@.xml",
+                                      [[facelandmark.maskImageName stringByDeletingPathExtension] lastPathComponent] ]]
+                         atomically:YES];
+    }
     [outputString appendString:@"<?xml version='1.0' encoding='ISO-8859-1'?>\n"
-    "<?xml-stylesheet type = 'text/xsl' href = 'image_metadata_stylesheet.xsl'?>\n"
-    "<dataset>\n"
-    "<name>imglab dataset</name>\n"
-    "<comment>Created by imglab tool.</comment> <images>\n" ];
+     "<?xml-stylesheet type = 'text/xsl' href = 'image_metadata_stylesheet.xsl'?>\n"
+     "<dataset>\n"
+     "<name>imglab dataset</name>\n"
+     "<comment>Created by imglab tool.</comment><images>\n" ];
     for(long index = 0; index < trainMaskArray.count; index++){
         FaceLandmarks *faceLandmark = [trainMaskArray objectAtIndex:index];
         NSString *imageName = [faceLandmark.maskImageName lastPathComponent];
@@ -184,7 +239,7 @@
             [outputString appendString:@"</box>\n"];
             if(++index == trainMaskArray.count) break;
             faceLandmark = [trainMaskArray objectAtIndex:index];
-        }while([[faceLandmark.maskImageName lastPathComponent] isEqualToString:imageName]);
+        } while([[faceLandmark.maskImageName lastPathComponent] isEqualToString:imageName]);
         [outputString appendString:@"</image>\n"];
         index--;
     }
@@ -199,16 +254,30 @@
 }
 
 -(NSString *)getBoxString:(FaceRect *)faceRect {
+    
     return [NSString stringWithFormat:@"<box top = '%ld' left = '%ld' width = '%ld' height = '%ld'>\n",
             faceRect.top, faceRect.left, faceRect.width, faceRect.height];
 }
 
 -(NSString *)getPartString:(Landmarks *)landmark {
+    
     return [NSString stringWithFormat:@"<part name = '%ld' x = '%ld' y = '%ld'/>\n",
-            landmark.landmarkIndex + 1, landmark.xCoodinate, landmark.yCoodinate];
+            landmark.landmarkIndex, landmark.xCoodinate, landmark.yCoodinate];
 }
 
+-(NSString *)getLandmarkString:(Landmarks *)landmark {
+    
+    return [NSString stringWithFormat:@"<landmark vertex = \"%ld\" x = \"%ld\" y = \"%ld\"/>\n",
+            landmark.landmarkIndex, landmark.xCoodinate, landmark.yCoodinate];
+}
 
+-(NSInteger)getAttributeFrom:(NSString *)landmarksString
+           withAttributeName:(NSString *)attribute {
+    
+    landmarksString = [[landmarksString componentsSeparatedByString:attribute] lastObject];
+    NSInteger atributeValue = [[[landmarksString componentsSeparatedByString:@"'"] firstObject] integerValue];
+    return atributeValue;
+}
 
 
 
@@ -234,7 +303,41 @@
 }
 
 
+-(void)deleteLandmark {
+    for(FaceLandmarks *faceLandmark in trainMaskArray){
+        for(int index = 0; index < faceLandmark.landmarksArray.count; ){
+            Landmarks *landmark = [faceLandmark.landmarksArray objectAtIndex:index];
+            if(!CGRectContainsPoint(CGRectMake(0, 0, faceLandmark.maskWidth, faceLandmark.maskHeight), CGPointMake(landmark.xCoodinate, landmark.yCoodinate))){
+                [faceLandmark.landmarksArray removeObject:landmark];
+            }
+            else {
+                index++;
+            }
+        }
+        
+    }
+}
 
+-(void)deleteLandmarkRandmoly:(int)deleteCount {
+    const int NO_LANDMARKS = 67;
+    //    int *deletedIndex = calloc(deleteCount , sizeof(int));
+    //    int index;
+    for(FaceLandmarks *faceLandmark in trainMaskArray){
+        int counting = deleteCount;
+        while (counting) {
+            int landmarkIndex = arc4random_uniform(NO_LANDMARKS);
+            for(Landmarks *landmark in faceLandmark.landmarksArray ){
+                if(landmark.landmarkIndex == landmarkIndex){
+                    counting--;
+                    [faceLandmark.landmarksArray removeObject:landmark];
+                    break;
+                }
+            }
+        }
+        
+    }
+    //    free(deletedIndex);
+}
 
 
 

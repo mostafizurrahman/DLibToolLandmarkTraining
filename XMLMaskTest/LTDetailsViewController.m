@@ -54,10 +54,14 @@ void* const ColorPanelContext = (void*)1001;
     previousLandmark = [[Landmarks alloc] init];
     self.indexTextField.delegate = self;
     selectionRadius = 6;
+    
 //    self.detailsImageView.wantsLayer = YES;
 //    self.detailsImageView.layer.borderColor = [[NSColor redColor] CGColor];
 //    self.detailsImageView.layer.borderWidth = 1;
     self.detailsImageView.clickedDelegate = self;
+    drawingType = 1;
+    if(self.faceLandmark)
+    [self drawImage];
 }
 
 - (IBAction)zoomIn:(id)sender {
@@ -65,16 +69,19 @@ void* const ColorPanelContext = (void*)1001;
     [self.detailsImageView zoomImage:1];
     [[NSCursor arrowCursor] set];
 }
+
 - (IBAction)zoomOut:(id)sender {
     self.detailsImageView.shouldDragImage = YES;
     [self.detailsImageView zoomImage:0];
     [[NSCursor arrowCursor] set];
 }
+
 - (IBAction)aspectZoom:(id)sender {
     self.detailsImageView.shouldDragImage = YES;
     [self.detailsImageView zoomImage:2];
     [[NSCursor arrowCursor] set];
 }
+
 - (IBAction)fitZoom:(id)sender {
     self.detailsImageView.shouldDragImage = YES;
     [self.detailsImageView zoomImage:3];
@@ -96,9 +103,11 @@ void* const ColorPanelContext = (void*)1001;
     }
     [NSApp terminate:self];
 }
+
 - (IBAction)hideDetailsView:(id)sender {
     [self dismissViewController:self];
 }
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context {
     NSColor *color = ((NSColorPanel *)object).color;
@@ -109,13 +118,13 @@ void* const ColorPanelContext = (void*)1001;
     NSColor *dotColor = [NSColor colorWithCalibratedRed:1.0f - color.redComponent  green: 1.0f - color.blueComponent blue: 1.0f - color.redComponent alpha:1.0];
     [self drawImageInView:color dotColor:dotColor];
 }
+
 - (IBAction)showColorPanel:(id)sender {
     NSColorPanel *panel = [NSColorPanel sharedColorPanel];
     [panel orderFront:nil];
     [panel setTarget:self];
     [panel makeKeyAndOrderFront:self];
 }
-
 
 -(void)drawImageInView:(NSColor *)color dotColor:(NSColor *)dotColor{
     if (!isProcessing)
@@ -146,15 +155,6 @@ void* const ColorPanelContext = (void*)1001;
     }
 }
 
-- (void)animateViewToFrame:(CGFloat)frameValue {
-    
-    isProcessing = false;
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:0.3];
-    self.topSpaceConstraint.constant = self.topSpaceConstraint.constant + frameValue;
-    [self.detailsImageView setNeedsDisplay:YES];
-    [NSAnimationContext endGrouping];
-}
 
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
 {
@@ -167,19 +167,21 @@ void* const ColorPanelContext = (void*)1001;
     NSPasteboard *pasteboard = [sender draggingPasteboard];
     NSArray *fileArray = [pasteboard propertyListForType:NSFilenamesPboardType];
     NSString *pathString = [fileArray firstObject];
-    if([[pathString pathExtension] isEqualToString:@"xml"])
+    if([@"xmljsontxtcsv" containsString:[[pathString pathExtension] lowercaseString]])
     {
         [self.detailsImageView loadFaceLanmark:pathString];
-        [self animateViewToFrame:50];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.detailsImageView.resolutionLabel = self.resolutionLabel;
-            previousLandmark.landmarkIndex = -1;
-            [self.detailsImageView loadNextImage];
-            [self loadImageInDetailsView];
+            if(!self.detailsImageView.error){
+                self.detailsImageView.resolutionLabel = self.resolutionLabel;
+                previousLandmark.landmarkIndex = -1;
+                [self.detailsImageView loadNextImage];
+                [self loadImageInDetailsView];
+            }
+            else{
+                
+            }
         });
-    }
-    else {
-        [self animateViewToFrame:-50];
     }
     return YES;
 }
@@ -303,7 +305,6 @@ void* const ColorPanelContext = (void*)1001;
     drawingType =  1;
     [self drawImage];
     self.filePathTextField.stringValue = self.faceLandmark.maskImageName.lastPathComponent;
-    
 }
 
 -(void)landmarkClickedAtPoint:(NSPoint)clickedPoint{
@@ -404,6 +405,16 @@ void* const ColorPanelContext = (void*)1001;
     }
 }
 
+
+- (IBAction)deleteLandmark:(id)sender {
+    [self.detailsImageView deleteLandmark];
+}
+
+- (IBAction)deleteRandomRange:(id)sender {
+    
+    int deleteCount = [self.locationTextField intValue];
+    [self.detailsImageView deleteLandmarkRandomly:deleteCount];
+}
 
 
 @end

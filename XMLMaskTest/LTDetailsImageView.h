@@ -20,6 +20,8 @@
 
 @interface LTDetailsImageView : IKImageView
 
+@property (readwrite) NSError *error;
+
 -(void)zoomImage:(NSUInteger)zoom;
 -(void)setImage:(NSString *)imagePath;
 -(void)updateImage:(CGImageRef)inputImageRef;
@@ -29,12 +31,13 @@
 -(void)deleteImage;
 -(void)updateIndex:(int)value;
 -(CGSize)getSize;
--(void)changeCursor;
 -(BOOL)isIndexOutOfBound:(NSUInteger)index;
 -(void)jumpToIndex:(NSUInteger)index;
 -(FaceLandmarks *)getCurrentFaceLandmark;
+-(void)deleteLandmark ;
 -(NSUInteger)getCurrentIndex;
-
+-(void)deleteImage:(int)landmarkCount;
+-(void)deleteLandmarkRandomly:(int)deleteCount;
 @property (readwrite) BOOL shouldDragImage;
 @property (readwrite) FaceLandmarks *faceLandmarks;
 @property (readwrite) NSTextField *resolutionLabel;

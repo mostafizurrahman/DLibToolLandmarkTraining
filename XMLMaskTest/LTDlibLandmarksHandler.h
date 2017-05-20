@@ -11,7 +11,7 @@
 #define LANDMARK_COUNT 68
 @interface LTDlibLandmarksHandler : NSObject
 
-
+@property (readwrite) NSError *error;
 @property (readwrite) LTDetailsImageView *detailsView;
 @property (readonly)     NSMutableArray *trainMaskArray;
 @property (readwrite) NSInteger currentFaceIndex;
@@ -20,5 +20,6 @@
 -(instancetype)initWithFilePath:(NSString *)filePath;
 -(BOOL)updateTrainFile;
 -(void)deleteImage;
-
+-(void)deleteLandmark;
+-(void)deleteLandmarkRandmoly:(int)deleteCount ;
 @end
