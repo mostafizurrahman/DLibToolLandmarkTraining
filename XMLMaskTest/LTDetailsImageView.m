@@ -66,8 +66,8 @@
     return [landmarkHandler.trainMaskArray objectAtIndex:landmarkHandler.currentFaceIndex];
 }
 
--(void)deleteLandmark {
-    [landmarkHandler deleteLandmark];
+-(void)deleteLandmark:(int)index {
+    [landmarkHandler deleteLandmark:index];
 }
 
 -(CGSize)getSize{

@@ -8,7 +8,7 @@
 
 #import "LTDetailsViewController.h"
 #import "LTStaticImageDrawing.h"
-
+#import "OnlyIntegerValueFormatter.h"
 #import "LTNumberFormatter.h"
 
 
@@ -54,10 +54,12 @@ void* const ColorPanelContext = (void*)1001;
     previousLandmark = [[Landmarks alloc] init];
     self.indexTextField.delegate = self;
     selectionRadius = 6;
+    OnlyIntegerValueFormatter *fortmatter = [[OnlyIntegerValueFormatter alloc] init];
+    [self.delRanLanCountTextField setFormatter:fortmatter];
+    [self.delLanAtIndexTextField setFormatter:formatter];
     
-//    self.detailsImageView.wantsLayer = YES;
-//    self.detailsImageView.layer.borderColor = [[NSColor redColor] CGColor];
-//    self.detailsImageView.layer.borderWidth = 1;
+    
+    
     self.detailsImageView.clickedDelegate = self;
     drawingType = 1;
     if(self.faceLandmark)
@@ -407,19 +409,23 @@ void* const ColorPanelContext = (void*)1001;
 
 
 - (IBAction)deleteLandmark:(id)sender {
-    [self.detailsImageView deleteLandmark];
+    const int index = [self.delLanAtIndexTextField.stringValue intValue];
+    for(Landmarks *landmark in _faceLandmark.landmarksArray){
+        if(landmark.landmarkIndex == index){
+            [_faceLandmark.landmarksArray removeObject:landmark];
+            break;
+        }
+    }
+    
 }
 
 - (IBAction)deleteRandomRange:(id)sender {
     
-    int deleteCount = [self.locationTextField intValue];
+    int deleteCount = [self.delRanLanCountTextField intValue];
     [self.detailsImageView deleteLandmarkRandomly:deleteCount];
 }
 
 
 @end
 
-//@implementation OnlyIntegerValueFormatter
-//
 
-//@end

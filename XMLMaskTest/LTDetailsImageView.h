@@ -34,7 +34,7 @@
 -(BOOL)isIndexOutOfBound:(NSUInteger)index;
 -(void)jumpToIndex:(NSUInteger)index;
 -(FaceLandmarks *)getCurrentFaceLandmark;
--(void)deleteLandmark ;
+-(void)deleteLandmark:(int)index ;
 -(NSUInteger)getCurrentIndex;
 -(void)deleteImage:(int)landmarkCount;
 -(void)deleteLandmarkRandomly:(int)deleteCount;

@@ -26,4 +26,7 @@
 @property (weak) IBOutlet NSTextField *indexTextField;
 @property (weak) IBOutlet NSTextField *locationTextField;
 
+@property (weak) IBOutlet NSTextField *delRanLanCountTextField;
+@property (weak) IBOutlet NSTextField *delLanAtIndexTextField;
+
 @end

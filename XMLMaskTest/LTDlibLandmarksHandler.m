@@ -303,7 +303,7 @@
 }
 
 
--(void)deleteLandmark {
+-(void)deleteLandmark:(int)index {
     for(FaceLandmarks *faceLandmark in trainMaskArray){
         for(int index = 0; index < faceLandmark.landmarksArray.count; ){
             Landmarks *landmark = [faceLandmark.landmarksArray objectAtIndex:index];

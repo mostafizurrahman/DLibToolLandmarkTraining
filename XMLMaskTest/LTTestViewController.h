@@ -24,5 +24,7 @@
 @property (nonatomic) NSColorPanel *colorPanel;
 @property (strong) IBOutlet NSTextField *vertextTextField;
 @property (weak) NSColorWell *updatingColorWell;
+
+
 @end
 

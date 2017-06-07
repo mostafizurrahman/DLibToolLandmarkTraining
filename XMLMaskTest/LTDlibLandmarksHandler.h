@@ -20,6 +20,6 @@
 -(instancetype)initWithFilePath:(NSString *)filePath;
 -(BOOL)updateTrainFile;
 -(void)deleteImage;
--(void)deleteLandmark;
+-(void)deleteLandmark:(int)index;
 -(void)deleteLandmarkRandmoly:(int)deleteCount ;
 @end
