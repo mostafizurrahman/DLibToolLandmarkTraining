@@ -183,6 +183,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="aspectZoom:" target="aCh-VH-OyI" id="hv3-GN-aBC"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="siU-W4-huS">
                                                     <rect key="frame" x="101" y="1" width="101" height="32"/>
@@ -190,6 +193,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="zoomOut:" target="aCh-VH-OyI" id="QB4-o9-bmX"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F40-FA-QQy">
                                                     <rect key="frame" x="11" y="1" width="90" height="32"/>
@@ -197,6 +203,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="zoomIn:" target="aCh-VH-OyI" id="APN-vx-6BX"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-d8-JIb">
                                                     <rect key="frame" x="288" y="1" width="90" height="32"/>
@@ -207,6 +216,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="fitZoom:" target="aCh-VH-OyI" id="kgE-bU-Top"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZ7-Yd-TiR">
                                                     <rect key="frame" x="243" y="28" width="49" height="32"/>
@@ -214,6 +226,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="increament:" target="aCh-VH-OyI" id="fXJ-Gg-MfP"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EJB-Cn-iEs">
                                                     <rect key="frame" x="11" y="28" width="49" height="32"/>
@@ -221,6 +236,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="decreament:" target="aCh-VH-OyI" id="saz-fm-tne"/>
+                                                    </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cms-Ey-CFO">
                                                     <rect key="frame" x="53" y="37" width="190" height="17"/>
@@ -326,6 +344,9 @@
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
+                                                    <connections>
+                                                        <action selector="jumpLandmarkIndex:" target="aCh-VH-OyI" id="C4a-nv-Zun"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-tm-V4y">
                                                     <rect key="frame" x="182" y="30" width="82" height="22"/>
@@ -465,6 +486,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="showColorPanel:" target="aCh-VH-OyI" id="48C-s9-JRK"/>
+                                                    </connections>
                                                 </button>
                                                 <button canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-uf-wNR">
                                                     <rect key="frame" x="178" y="5" width="242" height="18"/>
@@ -515,6 +539,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="readNextImage:" target="aCh-VH-OyI" id="YME-Qx-CjR"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QH3-X1-vJD">
                                                     <rect key="frame" x="719" y="23" width="175" height="32"/>
@@ -525,6 +552,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="selectIndex:" target="aCh-VH-OyI" id="Za9-Dk-WA5"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VGt-Tb-1iB">
                                                     <rect key="frame" x="719" y="-4" width="175" height="32"/>
@@ -532,6 +562,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="readPreviousImage:" target="aCh-VH-OyI" id="zUj-y6-kT3"/>
+                                                    </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvB-S7-7BZ">
                                                     <rect key="frame" x="387" y="32" width="257" height="17"/>
@@ -585,8 +618,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundCheckbox" destination="hKH-uf-wNR" id="dBE-Fc-kRE"/>
                         <outlet property="delLanAtIndexTextField" destination="i7z-mQ-cdz" id="EPJ-4t-PfS"/>
                         <outlet property="delRanLanCountTextField" destination="lVn-tP-dlx" id="n4y-kF-PZM"/>
+                        <outlet property="filePathTextField" destination="gOF-WL-C9b" id="0tY-D7-Xjq"/>
+                        <outlet property="imageIndexTextField" destination="ksp-vO-5Pn" id="9dA-Ky-AQi"/>
+                        <outlet property="locationTextField" destination="P1M-tm-V4y" id="22Y-Nx-ZEp"/>
                     </connections>
                 </viewController>
             </objects>

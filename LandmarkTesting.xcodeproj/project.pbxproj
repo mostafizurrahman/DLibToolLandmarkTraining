@@ -16,6 +16,7 @@
 		BE75D5181E9B4D3900C04706 /* LTDetailsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE75D5161E9B4D3900C04706 /* LTDetailsImageView.m */; };
 		BE75D51B1E9B4EAD00C04706 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE75D51A1E9B4EAD00C04706 /* AppKit.framework */; };
 		BE75D51E1E9B65F400C04706 /* LTStaticImageDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE75D51D1E9B65F400C04706 /* LTStaticImageDrawing.m */; };
+		BEDD9B9E1EE814A4006BB36D /* aa in Resources */ = {isa = PBXBuildFile; fileRef = BEDD9B9D1EE814A4006BB36D /* aa */; };
 		BEF45CC81EB0D5B200AA72C4 /* FDMaskXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF45CC71EB0D5B200AA72C4 /* FDMaskXmlParser.m */; };
 		FA31CC901D65A92600F90AA0 /* FaceMaskCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = FA31CC881D65A92600F90AA0 /* FaceMaskCategories.m */; };
 		FA31CC911D65A92600F90AA0 /* FaceMaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA31CC8A1D65A92600F90AA0 /* FaceMaskItem.m */; };
@@ -71,6 +72,7 @@
 		BE75D51A1E9B4EAD00C04706 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		BE75D51C1E9B65F400C04706 /* LTStaticImageDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTStaticImageDrawing.h; sourceTree = "<group>"; };
 		BE75D51D1E9B65F400C04706 /* LTStaticImageDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTStaticImageDrawing.m; sourceTree = "<group>"; };
+		BEDD9B9D1EE814A4006BB36D /* aa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aa; sourceTree = "<group>"; };
 		BEF45CC61EB0D5B200AA72C4 /* FDMaskXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDMaskXmlParser.h; sourceTree = "<group>"; };
 		BEF45CC71EB0D5B200AA72C4 /* FDMaskXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDMaskXmlParser.m; sourceTree = "<group>"; };
 		FA31CC871D65A92600F90AA0 /* FaceMaskCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceMaskCategories.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				FAE817891D659C4400088D85 /* Assets.xcassets */,
 				FAE8178B1D659C4400088D85 /* Main.storyboard */,
 				FAE8178E1D659C4400088D85 /* Info.plist */,
+				BEDD9B9D1EE814A4006BB36D /* aa */,
 			);
 			name = AppDelegateView;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDD9B9E1EE814A4006BB36D /* aa in Resources */,
 				FAE8178A1D659C4400088D85 /* Assets.xcassets in Resources */,
 				FA61BC301D72C295009EE164 /* leopard.xml in Resources */,
 				FA61BC2F1D72C295009EE164 /* leopard.png in Resources */,

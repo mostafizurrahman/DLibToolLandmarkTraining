@@ -28,5 +28,6 @@
 
 @property (weak) IBOutlet NSTextField *delRanLanCountTextField;
 @property (weak) IBOutlet NSTextField *delLanAtIndexTextField;
+@property (weak) IBOutlet NSTextField *imageIndexTextField;
 
 @end

@@ -57,13 +57,13 @@ void* const ColorPanelContext = (void*)1001;
     OnlyIntegerValueFormatter *fortmatter = [[OnlyIntegerValueFormatter alloc] init];
     [self.delRanLanCountTextField setFormatter:fortmatter];
     [self.delLanAtIndexTextField setFormatter:formatter];
-    
+    [self.imageIndexTextField setFormatter:formatter];
     
     
     self.detailsImageView.clickedDelegate = self;
     drawingType = 1;
     if(self.faceLandmark)
-    [self drawImage];
+        [self drawImage];
 }
 
 - (IBAction)zoomIn:(id)sender {
@@ -141,10 +141,10 @@ void* const ColorPanelContext = (void*)1001;
                 CGImageSourceRef source;
                 CFDataRef cfdRef = (__bridge CFDataRef)[someImage TIFFRepresentation];
                 source = CGImageSourceCreateWithData(cfdRef, NULL);
-//                NSDictionary *dictionary = self.detailsImageView.imageProperties;
+                //                NSDictionary *dictionary = self.detailsImageView.imageProperties;
                 CGImageRef imgRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
                 CGFloat zoomFactor = self.detailsImageView.zoomFactor;
-//                CGPoint point = self.detailsImageView.loc
+                //                CGPoint point = self.detailsImageView.loc
                 [self.detailsImageView updateImage:imgRef];
                 self.detailsImageView.zoomFactor = zoomFactor;
                 [self.detailsImageView scrollToPoint:scrollPoint];
@@ -254,10 +254,10 @@ void* const ColorPanelContext = (void*)1001;
     }
     NSString *key = [theEvent charactersIgnoringModifiers];
     if([key isEqualToString:@"z"]){
-       
+        
     }
     else if([key isEqualToString:@"c"]){
-         [[NSCursor arrowCursor] set];
+        [[NSCursor arrowCursor] set];
     }
     else if([key isEqualToString:@"s"]){
         if(isCommandKey){
@@ -312,9 +312,9 @@ void* const ColorPanelContext = (void*)1001;
 -(void)landmarkClickedAtPoint:(NSPoint)clickedPoint{
     if (!isProcessing)
     {
-//        scrollPoint = clickedPoint;//[self.detailsImageView convertImagePointToViewPoint:clickedPoint];
+        //        scrollPoint = clickedPoint;//[self.detailsImageView convertImagePointToViewPoint:clickedPoint];
         isProcessing = YES;
-    BOOL isEdited = NO;
+        BOOL isEdited = NO;
         CGRect boundingRect = CGRectMake(clickedPoint.x - selectionRadius / 2, imageHeight - clickedPoint.y -  selectionRadius / 2, selectionRadius, selectionRadius);
         for(Landmarks *landmark in self.faceLandmark.landmarksArray){
             if(CGRectContainsPoint(boundingRect, CGPointMake(landmark.xCoodinate, landmark.yCoodinate))){
@@ -324,7 +324,7 @@ void* const ColorPanelContext = (void*)1001;
                 previousLandmark.xCoodinate = landmark.xCoodinate;
                 previousLandmark.yCoodinate = landmark.yCoodinate;
                 if(currentLandmark == nil ||
-                    currentLandmark.landmarkIndex != landmark.landmarkIndex){
+                   currentLandmark.landmarkIndex != landmark.landmarkIndex){
                     currentLandmark.isEdited = NO;
                     currentLandmark = nil;
                     currentLandmark = landmark;
@@ -341,60 +341,42 @@ void* const ColorPanelContext = (void*)1001;
             //draw
             [self drawImage];
         }
-         /*long topdist = (clickedPoint.y - imageHeight + self.faceLandmark.box.top) ;
-        topdist = topdist < 0 ? 1000 : topdist;
-        long leftdist = (self.faceLandmark.box.left - clickedPoint.x);
-        leftdist = leftdist < 0 ? 1000 : leftdist;
-//        height - faceLandmarks.box.height - faceLandmarks.box.top
-        
-        long rightdist = (clickedPoint.x - self.faceLandmark.box.left - self.faceLandmark.box.width);
-        rightdist = rightdist < 0 ? 1000 : rightdist;
-        long bottomdist = (imageHeight - self.faceLandmark.box.height - self.faceLandmark.box.top ) - clickedPoint.y;
-        bottomdist = bottomdist < 0 ? 1000 : bottomdist;
-        long array[] = {leftdist,topdist, rightdist, bottomdist};
-        long min = array[0];
-        for(int i = 1; i < 4; i++){
-            if(array[i] < min ){
-                min = array[i];
-            }
-        }
-        if(min == array[0]){ // left
-            self.faceLandmark.box.left -= min;
-        }
-        else if(min == array[1]){ // top
-            self.faceLandmark.box.top -= min;
-        }
-        else if(min == array[2]){
-             self.faceLandmark.box.left += min;
-        }
-        else if(min == array[3]){
-            self.faceLandmark.box.top += min;
-        }
-        [self drawImage];*/
+        /*long topdist = (clickedPoint.y - imageHeight + self.faceLandmark.box.top) ;
+         topdist = topdist < 0 ? 1000 : topdist;
+         long leftdist = (self.faceLandmark.box.left - clickedPoint.x);
+         leftdist = leftdist < 0 ? 1000 : leftdist;
+         //        height - faceLandmarks.box.height - faceLandmarks.box.top
+         
+         long rightdist = (clickedPoint.x - self.faceLandmark.box.left - self.faceLandmark.box.width);
+         rightdist = rightdist < 0 ? 1000 : rightdist;
+         long bottomdist = (imageHeight - self.faceLandmark.box.height - self.faceLandmark.box.top ) - clickedPoint.y;
+         bottomdist = bottomdist < 0 ? 1000 : bottomdist;
+         long array[] = {leftdist,topdist, rightdist, bottomdist};
+         long min = array[0];
+         for(int i = 1; i < 4; i++){
+         if(array[i] < min ){
+         min = array[i];
+         }
+         }
+         if(min == array[0]){ // left
+         self.faceLandmark.box.left -= min;
+         }
+         else if(min == array[1]){ // top
+         self.faceLandmark.box.top -= min;
+         }
+         else if(min == array[2]){
+         self.faceLandmark.box.left += min;
+         }
+         else if(min == array[3]){
+         self.faceLandmark.box.top += min;
+         }
+         [self drawImage];*/
     }
     
 }
 
--(void)controlTextDidEndEditing:(NSNotification *)obj{
-    NSUInteger index = [[self.indexTextField stringValue] integerValue];
-    if(![self.detailsImageView isIndexOutOfBound:index]){
-        [self.detailsImageView jumpToIndex:index];
-        previousLandmark.landmarkIndex = -1;
-        [self.detailsImageView loadNextImage];
-    }
-}
-- (IBAction)increament:(id)sender {
-
-//    self.faceLandmark.box.height += 5;
-//    self.faceLandmark.box.width += 5;
-    selectionRadius = ++selectionRadius > 20 ? 20 : selectionRadius;
-}
-- (IBAction)decreament:(id)sender {
-
-    selectionRadius = --selectionRadius < 6 ? 6 : selectionRadius;
-}
-- (IBAction)selectIndex:(id)sender {
-    long index = [((NSSecureTextField *)sender).stringValue integerValue];
+- (IBAction)jumpLandmarkIndex:(id)sender {
+    long index = [((NSTextField *)sender).stringValue integerValue];
     for(Landmarks *landmark in self.faceLandmark.landmarksArray){
         if(landmark.landmarkIndex == index){
             currentLandmark.isEdited = NO;
@@ -404,6 +386,25 @@ void* const ColorPanelContext = (void*)1001;
             break;
             
         }
+    }
+    
+}
+
+- (IBAction)increament:(id)sender {
+    selectionRadius = ++selectionRadius > 20 ? 20 : selectionRadius;
+}
+
+
+- (IBAction)decreament:(id)sender {
+    selectionRadius = --selectionRadius < 6 ? 6 : selectionRadius;
+}
+
+- (IBAction)selectIndex:(id)sender {
+    long index = [self.imageIndexTextField.stringValue integerValue];
+    if(![self.detailsImageView isIndexOutOfBound:index]){
+        [self.detailsImageView jumpToIndex:index];
+        previousLandmark.landmarkIndex = -1;
+        [self.detailsImageView loadNextImage];
     }
 }
 
@@ -427,5 +428,3 @@ void* const ColorPanelContext = (void*)1001;
 
 
 @end
-
-
