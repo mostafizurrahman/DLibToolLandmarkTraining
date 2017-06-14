@@ -116,7 +116,7 @@
     }
     NSSortDescriptor *landmarkDescriptor = [[NSSortDescriptor alloc] initWithKey:@"landmarkIndex" ascending:YES];
     NSArray *sD = @[landmarkDescriptor];
-    faceLandmarks.landmarksArray = [landmarksArray sortedArrayUsingDescriptors:sD];
+    faceLandmarks.landmarksArray = [[NSMutableArray alloc] initWithArray:[landmarksArray sortedArrayUsingDescriptors:sD]];
     return faceLandmarks;
 }
 

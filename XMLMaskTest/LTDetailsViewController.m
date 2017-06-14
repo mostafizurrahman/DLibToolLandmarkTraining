@@ -151,10 +151,8 @@ void* const ColorPanelContext = (void*)1001;
                 CGImageSourceRef source;
                 CFDataRef cfdRef = (__bridge CFDataRef)[someImage TIFFRepresentation];
                 source = CGImageSourceCreateWithData(cfdRef, NULL);
-                //                NSDictionary *dictionary = self.detailsImageView.imageProperties;
                 CGImageRef imgRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
                 CGFloat zoomFactor = self.detailsImageView.zoomFactor;
-                //                CGPoint point = self.detailsImageView.loc
                 [self.detailsImageView updateImage:imgRef];
                 self.detailsImageView.zoomFactor = zoomFactor;
                 [self.detailsImageView scrollToPoint:scrollPoint];
@@ -342,6 +340,8 @@ void* const ColorPanelContext = (void*)1001;
                     currentLandmark.isEdited = NO;
                     currentLandmark = nil;
                     currentLandmark = landmark;
+                    self.delLanAtIndexTextField.stringValue = [NSString stringWithFormat:@"%ld",landmark.landmarkIndex];
+                    self.indexTextField.stringValue = [NSString stringWithFormat:@"%ld",landmark.landmarkIndex];
                 }
                 break;
             }
@@ -398,11 +398,10 @@ void* const ColorPanelContext = (void*)1001;
             currentLandmark = nil;
             currentLandmark = landmark;
             landmark.isEdited = YES;
+            [self drawImage];
             break;
-            
         }
     }
-    
 }
 
 - (IBAction)increament:(id)sender {
@@ -430,9 +429,15 @@ void* const ColorPanelContext = (void*)1001;
 - (IBAction)deleteLandmark:(id)sender {
     if(!self.faceLandmark ) return;
     const int index = [self.delLanAtIndexTextField.stringValue intValue];
+    
     for(Landmarks *landmark in _faceLandmark.landmarksArray){
+        
         if(landmark.landmarkIndex == index){
             [_faceLandmark.landmarksArray removeObject:landmark];
+            if(index == currentLandmark.landmarkIndex) {
+                currentLandmark = nil;
+            }
+            [self drawImage];
             break;
         }
     }

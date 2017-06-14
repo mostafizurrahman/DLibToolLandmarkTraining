@@ -358,6 +358,9 @@
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
+                                                    <connections>
+                                                        <action selector="resetCurrentImage:" target="aCh-VH-OyI" id="0qJ-df-A8F"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3Y-rc-7W6">
                                                     <rect key="frame" x="16" y="33" width="148" height="17"/>
@@ -408,33 +411,10 @@
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
+                                                    <connections>
+                                                        <action selector="deleteLandmark:" target="aCh-VH-OyI" id="EHY-df-xgR"/>
+                                                    </connections>
                                                 </textField>
-                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1yO-h4-NiQ">
-                                                    <rect key="frame" x="388" y="24" width="128" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="116" id="WCT-tG-W5T"/>
-                                                    </constraints>
-                                                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DA2-av-f66">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="deleteLandmark:" target="aCh-VH-OyI" id="gaU-wX-lbH"/>
-                                                    </connections>
-                                                </button>
-                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ui6-8g-ip2">
-                                                    <rect key="frame" x="11" y="-3" width="259" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="247" id="I73-wP-yxe"/>
-                                                    </constraints>
-                                                    <buttonCell key="cell" type="push" title="Set Landmark Index to Clicked Point" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V1T-94-BZ0">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="resetCurrentImage:" target="aCh-VH-OyI" id="wKN-VS-GA6"/>
-                                                    </connections>
-                                                </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlw-Kt-uh7">
                                                     <rect key="frame" x="553" y="6" width="259" height="17"/>
                                                     <constraints>
@@ -446,28 +426,34 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSp-KR-xBp">
+                                                    <rect key="frame" x="15" y="5" width="275" height="18"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="press enter in text field to perform action" id="IsC-nA-fEd">
+                                                        <font key="font" size="14" name="STHeitiSC-Light"/>
+                                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sof-Rc-Rf1" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" constant="1" id="1PY-al-QA2"/>
-                                                <constraint firstItem="1yO-h4-NiQ" firstAttribute="top" secondItem="dzo-ds-InQ" secondAttribute="bottom" constant="9" id="1jW-VU-vpE"/>
                                                 <constraint firstItem="i7z-mQ-cdz" firstAttribute="leading" secondItem="dzo-ds-InQ" secondAttribute="trailing" constant="8" id="4qQ-8C-KqN"/>
                                                 <constraint firstItem="lGE-iX-Gbu" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="6Jd-xy-PEs"/>
                                                 <constraint firstItem="H3Y-rc-7W6" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="18" id="6vq-dD-NlK"/>
-                                                <constraint firstItem="ui6-8g-ip2" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="17" id="9Tf-mE-swc"/>
                                                 <constraint firstItem="i7z-mQ-cdz" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="C0O-2N-Hhj"/>
                                                 <constraint firstItem="dzo-ds-InQ" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="E7A-a2-g0D"/>
                                                 <constraint firstItem="H3Y-rc-7W6" firstAttribute="top" secondItem="sof-Rc-Rf1" secondAttribute="bottom" constant="10" id="K1w-5m-SW3"/>
+                                                <constraint firstItem="vSp-KR-xBp" firstAttribute="top" secondItem="H3Y-rc-7W6" secondAttribute="bottom" constant="10" id="QSS-pG-ULE"/>
                                                 <constraint firstAttribute="trailing" secondItem="uHx-uv-Ioi" secondAttribute="trailing" constant="17" id="SQd-oe-3r9"/>
                                                 <constraint firstItem="dqE-a5-zKw" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="SUJ-l4-t5A"/>
                                                 <constraint firstItem="Wlw-Kt-uh7" firstAttribute="top" secondItem="uHx-uv-Ioi" secondAttribute="bottom" constant="8" id="YIs-bj-xn2"/>
                                                 <constraint firstItem="P1M-tm-V4y" firstAttribute="leading" secondItem="H3Y-rc-7W6" secondAttribute="trailing" constant="20" id="Z0r-8v-w3i"/>
                                                 <constraint firstItem="dqE-a5-zKw" firstAttribute="leading" secondItem="sof-Rc-Rf1" secondAttribute="trailing" constant="9" id="eMQ-8J-nv6"/>
-                                                <constraint firstItem="ui6-8g-ip2" firstAttribute="top" secondItem="H3Y-rc-7W6" secondAttribute="bottom" constant="8" id="eod-xf-6MX"/>
+                                                <constraint firstItem="vSp-KR-xBp" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="17" id="i4w-k4-zNQ"/>
                                                 <constraint firstItem="lVn-tP-dlx" firstAttribute="top" secondItem="uHx-uv-Ioi" secondAttribute="bottom" constant="8" id="jlH-ji-h2g"/>
                                                 <constraint firstItem="P1M-tm-V4y" firstAttribute="top" secondItem="dqE-a5-zKw" secondAttribute="bottom" constant="4" id="mDR-B5-lCx"/>
                                                 <constraint firstItem="sof-Rc-Rf1" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="17" id="qDS-zx-1Sz"/>
                                                 <constraint firstItem="uHx-uv-Ioi" firstAttribute="top" secondItem="lGE-iX-Gbu" secondAttribute="bottom" constant="5" id="scn-nj-PR0"/>
-                                                <constraint firstItem="1yO-h4-NiQ" firstAttribute="centerX" secondItem="htE-Dp-tAt" secondAttribute="centerX" id="tLN-Ih-J8B"/>
                                                 <constraint firstAttribute="trailing" secondItem="lGE-iX-Gbu" secondAttribute="trailing" constant="17" id="vHL-dm-E9G"/>
                                                 <constraint firstAttribute="trailing" secondItem="lVn-tP-dlx" secondAttribute="trailing" constant="17" id="yrv-Qe-sjr"/>
                                                 <constraint firstItem="lVn-tP-dlx" firstAttribute="leading" secondItem="Wlw-Kt-uh7" secondAttribute="trailing" constant="8" id="zfy-Rk-IuT"/>
@@ -588,6 +574,16 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cbp-lC-1hZ">
+                                                    <rect key="frame" x="387" y="-4" width="130" height="32"/>
+                                                    <buttonCell key="cell" type="push" title="Export As XML" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vx4-KP-Iy3">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="updateLandmarks:" target="aCh-VH-OyI" id="eHc-TZ-Od2"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fI7-zu-zey" firstAttribute="leading" secondItem="skT-Ne-Am6" secondAttribute="leading" constant="17" id="19k-ry-ZoN"/>
@@ -603,8 +599,10 @@
                                                 <constraint firstItem="ksp-vO-5Pn" firstAttribute="top" secondItem="skT-Ne-Am6" secondAttribute="top" constant="26" id="dB5-aL-FVo"/>
                                                 <constraint firstItem="QH3-X1-vJD" firstAttribute="leading" secondItem="ksp-vO-5Pn" secondAttribute="trailing" constant="8" id="emP-AJ-Tt4"/>
                                                 <constraint firstItem="X5K-yv-wRP" firstAttribute="leading" secondItem="skT-Ne-Am6" secondAttribute="leading" constant="17" id="fFA-Ag-jHp"/>
+                                                <constraint firstItem="Cbp-lC-1hZ" firstAttribute="centerX" secondItem="skT-Ne-Am6" secondAttribute="centerX" id="ggP-Aa-Id4"/>
                                                 <constraint firstAttribute="trailing" secondItem="QH3-X1-vJD" secondAttribute="trailing" constant="17" id="hM6-xt-Sgj"/>
                                                 <constraint firstItem="23A-T3-pfK" firstAttribute="leading" secondItem="skT-Ne-Am6" secondAttribute="leading" constant="19" id="ljU-Yr-UhK"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cbp-lC-1hZ" secondAttribute="bottom" constant="3" id="mcu-hI-Aig"/>
                                                 <constraint firstAttribute="bottom" secondItem="hKH-uf-wNR" secondAttribute="bottom" constant="7" id="rdk-QT-uI0"/>
                                                 <constraint firstAttribute="bottom" secondItem="VGt-Tb-1iB" secondAttribute="bottom" constant="3" id="uk0-lk-l3J"/>
                                                 <constraint firstItem="ksp-vO-5Pn" firstAttribute="leading" secondItem="wvB-S7-7BZ" secondAttribute="trailing" constant="8" id="v0H-Iw-FA9"/>
