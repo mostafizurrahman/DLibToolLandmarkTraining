@@ -230,10 +230,13 @@ void* const ColorPanelContext = (void*)1000;
 }
 
 - (IBAction)resetCurrentImage:(id)sender {
-    if(!self.faceLandmark ) return;
+    if(!self.faceLandmark || ![self.locationTextField.stringValue containsString:@"{"] ||
+       ![self.locationTextField.stringValue containsString:@"}"] ||
+       ![self.locationTextField.stringValue containsString:@","]) return;
     long index = [self.indexTextField.stringValue integerValue];
     for(Landmarks *landmark in self.faceLandmark.landmarksArray){
         if(index == landmark.landmarkIndex){
+            
             NSString *location = [self.locationTextField.stringValue stringByReplacingOccurrencesOfString:@"{" withString:@""];
             location = [location stringByReplacingOccurrencesOfString:@"}" withString:@""];
             NSArray *coord = [location componentsSeparatedByString:@","];
@@ -285,6 +288,7 @@ void* const ColorPanelContext = (void*)1000;
     }
     else if([key isEqualToString:@"d"]){
         self.detailsImageView.shouldDragImage = !self.detailsImageView.shouldDragImage;
+        self.hotKeyStatusLabel.stringValue = self.detailsImageView.shouldDragImage ? @"Drag image using mouse" : @"Select landmark using mouse click event";
     }
 }
 

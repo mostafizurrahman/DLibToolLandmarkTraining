@@ -256,17 +256,6 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-wd-7oV">
-                                                    <rect key="frame" x="701" y="58" width="189" height="17"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="185" id="tFH-a2-G09"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current editor status:" id="G9G-oC-CSn">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZM-aw-ayx">
                                                     <rect key="frame" x="292" y="37" width="352" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Press 'd' to toggle between selection and image dragging" id="Gxm-PP-UNu">
@@ -289,12 +278,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Cms-Ey-CFO" firstAttribute="top" secondItem="rgA-js-rjy" secondAttribute="bottom" constant="4" id="1bQ-Fz-EkF"/>
-                                                <constraint firstAttribute="trailing" secondItem="xyL-wd-7oV" secondAttribute="trailing" constant="17" id="52O-Gw-IMK"/>
                                                 <constraint firstItem="8ZM-aw-ayx" firstAttribute="top" secondItem="rgA-js-rjy" secondAttribute="bottom" constant="4" id="69k-J7-iCe"/>
                                                 <constraint firstItem="rgA-js-rjy" firstAttribute="leading" secondItem="XFl-Xn-NVj" secondAttribute="leading" constant="17" id="8p3-0D-YPo"/>
                                                 <constraint firstItem="kKU-d8-JIb" firstAttribute="leading" secondItem="JEC-8h-wEs" secondAttribute="trailing" constant="8" id="B1E-1H-0wH"/>
                                                 <constraint firstItem="F40-FA-QQy" firstAttribute="top" secondItem="Cms-Ey-CFO" secondAttribute="bottom" constant="8" id="DOs-mF-f7p"/>
-                                                <constraint firstItem="xyL-wd-7oV" firstAttribute="top" secondItem="XFl-Xn-NVj" secondAttribute="top" constant="3" id="GcL-C9-7gd"/>
                                                 <constraint firstItem="JEC-8h-wEs" firstAttribute="leading" secondItem="siU-W4-huS" secondAttribute="trailing" constant="12" id="LlI-c5-lDC"/>
                                                 <constraint firstItem="EJB-Cn-iEs" firstAttribute="leading" secondItem="XFl-Xn-NVj" secondAttribute="leading" constant="17" id="Ppw-tq-Bc2"/>
                                                 <constraint firstItem="siU-W4-huS" firstAttribute="leading" secondItem="F40-FA-QQy" secondAttribute="trailing" constant="12" id="XyZ-fc-Xju"/>
@@ -627,16 +614,27 @@
                                     <action selector="exitApp:" target="aCh-VH-OyI" id="6KM-Uj-dVQ"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-wd-7oV">
+                                <rect key="frame" x="18" y="591" width="915" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Current editor status:" id="G9G-oC-CSn">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="E4B-6W-vAH" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" constant="136" id="0My-ga-n6c"/>
                             <constraint firstItem="380-Lw-G58" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" constant="20" id="12G-ja-4n7"/>
                             <constraint firstAttribute="bottom" secondItem="E4B-6W-vAH" secondAttribute="bottom" id="FvM-7n-AdM"/>
+                            <constraint firstItem="xyL-wd-7oV" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" id="RAt-mG-Bho"/>
+                            <constraint firstItem="xyL-wd-7oV" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" constant="20" id="UwV-KC-KSE"/>
                             <constraint firstItem="DUn-HY-Jtk" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" constant="20" id="amk-9v-F1F"/>
                             <constraint firstAttribute="trailing" secondItem="E4B-6W-vAH" secondAttribute="trailing" id="iR1-j4-wjL"/>
                             <constraint firstItem="E4B-6W-vAH" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" id="lEs-Hq-Zof"/>
                             <constraint firstItem="380-Lw-G58" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" constant="20" id="mkx-ql-jDb"/>
                             <constraint firstAttribute="trailing" secondItem="380-Lw-G58" secondAttribute="trailing" constant="20" id="nN9-IG-IAZ"/>
+                            <constraint firstAttribute="trailing" secondItem="xyL-wd-7oV" secondAttribute="trailing" constant="20" id="prz-qD-LFD"/>
                             <constraint firstItem="DUn-HY-Jtk" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" constant="20" id="sRU-yQ-5Uq"/>
                         </constraints>
                     </view>
@@ -646,6 +644,7 @@
                         <outlet property="delRanLanCountTextField" destination="lVn-tP-dlx" id="KN0-G4-fI0"/>
                         <outlet property="detailsImageView" destination="E4B-6W-vAH" id="hIh-VR-PhE"/>
                         <outlet property="filePathTextField" destination="gOF-WL-C9b" id="cNM-v9-UM6"/>
+                        <outlet property="hotKeyStatusLabel" destination="xyL-wd-7oV" id="RyF-AF-qvK"/>
                         <outlet property="imageIndexTextField" destination="ksp-vO-5Pn" id="1oq-Pe-u4F"/>
                         <outlet property="indexTextField" destination="dqE-a5-zKw" id="TnS-Rw-6un"/>
                         <outlet property="locationTextField" destination="P1M-tm-V4y" id="ugf-Kq-cfN"/>
