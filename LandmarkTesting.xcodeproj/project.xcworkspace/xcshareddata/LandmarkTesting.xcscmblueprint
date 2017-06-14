@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FA1C9475B3E5E2B39BD9C898CBCF0DC10D78F25B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FA1C9475B3E5E2B39BD9C898CBCF0DC10D78F25B" : 9223372036854775807,
+    "3BB535F5A539609B32ADF7EA2B4718394527AE3B" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F944BADB-8595-48C0-AFD2-1C2B2B24DC28",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FA1C9475B3E5E2B39BD9C898CBCF0DC10D78F25B" : "LandmarkTrainingTool\/",
+    "3BB535F5A539609B32ADF7EA2B4718394527AE3B" : "..\/..\/facedection_bitbucket\/landmarktesting_osx"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LandmarkTesting",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LandmarkTesting.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/mostafizur.cse%40gmail.com@192.168.8.143:7990\/scm\/ipvfdpoc\/landmarktesting_osx.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3BB535F5A539609B32ADF7EA2B4718394527AE3B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mostafizurrahman\/DLibToolLandmarkTraining",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FA1C9475B3E5E2B39BD9C898CBCF0DC10D78F25B"
+    }
+  ]
+}

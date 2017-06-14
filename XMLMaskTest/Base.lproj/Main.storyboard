@@ -184,7 +184,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="aspectZoom:" target="aCh-VH-OyI" id="hv3-GN-aBC"/>
+                                                        <action selector="aspectZoom:" target="aCh-VH-OyI" id="Dv8-rQ-qFh"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="siU-W4-huS">
@@ -194,7 +194,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="zoomOut:" target="aCh-VH-OyI" id="QB4-o9-bmX"/>
+                                                        <action selector="zoomOut:" target="aCh-VH-OyI" id="bY0-HK-xig"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F40-FA-QQy">
@@ -204,7 +204,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="zoomIn:" target="aCh-VH-OyI" id="APN-vx-6BX"/>
+                                                        <action selector="zoomIn:" target="aCh-VH-OyI" id="zaf-mh-zL9"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-d8-JIb">
@@ -217,7 +217,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="fitZoom:" target="aCh-VH-OyI" id="kgE-bU-Top"/>
+                                                        <action selector="fitZoom:" target="aCh-VH-OyI" id="wFm-fy-Yfg"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZ7-Yd-TiR">
@@ -227,7 +227,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="increament:" target="aCh-VH-OyI" id="fXJ-Gg-MfP"/>
+                                                        <action selector="increament:" target="aCh-VH-OyI" id="kmd-83-QdF"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EJB-Cn-iEs">
@@ -237,7 +237,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="decreament:" target="aCh-VH-OyI" id="saz-fm-tne"/>
+                                                        <action selector="decreament:" target="aCh-VH-OyI" id="XoI-SY-Z1G"/>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cms-Ey-CFO">
@@ -263,7 +263,7 @@
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current editor status:" id="G9G-oC-CSn">
                                                         <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -281,7 +281,7 @@
                                                         <constraint firstAttribute="width" constant="508" id="j6F-Sn-PJ5"/>
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Press cmd + 's' to save currently edited landmark, press 'esc' to undo editing." id="6I9-Ak-HBx">
-                                                        <font key="font" metaFont="system"/>
+                                                        <font key="font" size="13" name="STHeitiSC-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -345,7 +345,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
-                                                        <action selector="jumpLandmarkIndex:" target="aCh-VH-OyI" id="C4a-nv-Zun"/>
+                                                        <action selector="jumpLandmarkIndex:" target="aCh-VH-OyI" id="z68-Eq-foa"/>
                                                     </connections>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-tm-V4y">
@@ -374,6 +374,30 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                 </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHx-uv-Ioi">
+                                                    <rect key="frame" x="659" y="24" width="235" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="223" id="LHn-Cs-d9A"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="push" title="Delete Landmarks Randomly" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pLT-EG-Kbh">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="deleteRandomRange:" target="aCh-VH-OyI" id="j1D-8d-5si"/>
+                                                    </connections>
+                                                </button>
+                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVn-tP-dlx">
+                                                    <rect key="frame" x="818" y="1" width="70" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="FAS-JW-Smn"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="dc7-cT-N9k">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7z-mQ-cdz">
                                                     <rect key="frame" x="515" y="56" width="82" height="22"/>
                                                     <constraints>
@@ -395,7 +419,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="deleteLandmark:" target="aCh-VH-OyI" id="FZK-fb-LhZ"/>
+                                                        <action selector="deleteLandmark:" target="aCh-VH-OyI" id="gaU-wX-lbH"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ui6-8g-ip2">
@@ -408,37 +432,21 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                 </button>
-                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHx-uv-Ioi">
-                                                    <rect key="frame" x="659" y="-4" width="235" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="223" id="LHn-Cs-d9A"/>
-                                                    </constraints>
-                                                    <buttonCell key="cell" type="push" title="Delete Landmarks Randomly" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pLT-EG-Kbh">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="deleteRandomRange:" target="aCh-VH-OyI" id="fMk-Up-E1N"/>
-                                                    </connections>
-                                                </button>
-                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVn-tP-dlx">
-                                                    <rect key="frame" x="818" y="28" width="70" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="FAS-JW-Smn"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="dc7-cT-N9k">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlw-Kt-uh7">
-                                                    <rect key="frame" x="553" y="33" width="259" height="17"/>
+                                                    <rect key="frame" x="553" y="6" width="259" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="255" id="a5i-8q-fHv"/>
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Number of landmarks to delete randomly :" id="waF-Uf-xDd">
                                                         <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exv-kr-qNG">
+                                                    <rect key="frame" x="273" y="6" width="272" height="14"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Landmark index will be jumped to mouse clik point" id="LZV-W2-xa8">
+                                                        <font key="font" size="11" name="STHeitiSC-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -450,20 +458,22 @@
                                                 <constraint firstItem="i7z-mQ-cdz" firstAttribute="leading" secondItem="dzo-ds-InQ" secondAttribute="trailing" constant="8" id="4qQ-8C-KqN"/>
                                                 <constraint firstItem="lGE-iX-Gbu" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="6Jd-xy-PEs"/>
                                                 <constraint firstItem="H3Y-rc-7W6" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="18" id="6vq-dD-NlK"/>
+                                                <constraint firstItem="exv-kr-qNG" firstAttribute="leading" secondItem="ui6-8g-ip2" secondAttribute="trailing" constant="11" id="7v9-dB-3LR"/>
                                                 <constraint firstItem="ui6-8g-ip2" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="17" id="9Tf-mE-swc"/>
                                                 <constraint firstItem="i7z-mQ-cdz" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="C0O-2N-Hhj"/>
-                                                <constraint firstItem="lVn-tP-dlx" firstAttribute="top" secondItem="lGE-iX-Gbu" secondAttribute="bottom" constant="7" id="Cj4-NZ-qEv"/>
+                                                <constraint firstAttribute="bottom" secondItem="exv-kr-qNG" secondAttribute="bottom" constant="6" id="D5c-8N-jyf"/>
                                                 <constraint firstItem="dzo-ds-InQ" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="E7A-a2-g0D"/>
                                                 <constraint firstItem="H3Y-rc-7W6" firstAttribute="top" secondItem="sof-Rc-Rf1" secondAttribute="bottom" constant="10" id="K1w-5m-SW3"/>
-                                                <constraint firstItem="Wlw-Kt-uh7" firstAttribute="top" secondItem="lGE-iX-Gbu" secondAttribute="bottom" constant="7" id="Rm7-PO-Ps1"/>
+                                                <constraint firstAttribute="trailing" secondItem="uHx-uv-Ioi" secondAttribute="trailing" constant="17" id="SQd-oe-3r9"/>
                                                 <constraint firstItem="dqE-a5-zKw" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="SUJ-l4-t5A"/>
+                                                <constraint firstItem="Wlw-Kt-uh7" firstAttribute="top" secondItem="uHx-uv-Ioi" secondAttribute="bottom" constant="8" id="YIs-bj-xn2"/>
                                                 <constraint firstItem="P1M-tm-V4y" firstAttribute="leading" secondItem="H3Y-rc-7W6" secondAttribute="trailing" constant="20" id="Z0r-8v-w3i"/>
-                                                <constraint firstAttribute="trailing" secondItem="uHx-uv-Ioi" secondAttribute="trailing" constant="17" id="dIz-Nm-Yst"/>
                                                 <constraint firstItem="dqE-a5-zKw" firstAttribute="leading" secondItem="sof-Rc-Rf1" secondAttribute="trailing" constant="9" id="eMQ-8J-nv6"/>
                                                 <constraint firstItem="ui6-8g-ip2" firstAttribute="top" secondItem="H3Y-rc-7W6" secondAttribute="bottom" constant="8" id="eod-xf-6MX"/>
+                                                <constraint firstItem="lVn-tP-dlx" firstAttribute="top" secondItem="uHx-uv-Ioi" secondAttribute="bottom" constant="8" id="jlH-ji-h2g"/>
                                                 <constraint firstItem="P1M-tm-V4y" firstAttribute="top" secondItem="dqE-a5-zKw" secondAttribute="bottom" constant="4" id="mDR-B5-lCx"/>
                                                 <constraint firstItem="sof-Rc-Rf1" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="17" id="qDS-zx-1Sz"/>
-                                                <constraint firstItem="uHx-uv-Ioi" firstAttribute="top" secondItem="Wlw-Kt-uh7" secondAttribute="bottom" constant="9" id="sEv-Oe-rYc"/>
+                                                <constraint firstItem="uHx-uv-Ioi" firstAttribute="top" secondItem="lGE-iX-Gbu" secondAttribute="bottom" constant="5" id="scn-nj-PR0"/>
                                                 <constraint firstItem="1yO-h4-NiQ" firstAttribute="centerX" secondItem="htE-Dp-tAt" secondAttribute="centerX" id="tLN-Ih-J8B"/>
                                                 <constraint firstAttribute="trailing" secondItem="lGE-iX-Gbu" secondAttribute="trailing" constant="17" id="vHL-dm-E9G"/>
                                                 <constraint firstAttribute="trailing" secondItem="lVn-tP-dlx" secondAttribute="trailing" constant="17" id="yrv-Qe-sjr"/>
@@ -487,7 +497,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="showColorPanel:" target="aCh-VH-OyI" id="48C-s9-JRK"/>
+                                                        <action selector="showColorPanel:" target="aCh-VH-OyI" id="o6l-wK-qCs"/>
                                                     </connections>
                                                 </button>
                                                 <button canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-uf-wNR">
@@ -540,7 +550,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="readNextImage:" target="aCh-VH-OyI" id="YME-Qx-CjR"/>
+                                                        <action selector="readNextImage:" target="aCh-VH-OyI" id="Gdd-GZ-3j9"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QH3-X1-vJD">
@@ -553,7 +563,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="selectIndex:" target="aCh-VH-OyI" id="Za9-Dk-WA5"/>
+                                                        <action selector="selectIndex:" target="aCh-VH-OyI" id="zmG-Pm-1cY"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VGt-Tb-1iB">
@@ -563,7 +573,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="readPreviousImage:" target="aCh-VH-OyI" id="zUj-y6-kT3"/>
+                                                        <action selector="readPreviousImage:" target="aCh-VH-OyI" id="buo-mp-rF2"/>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvB-S7-7BZ">
@@ -577,9 +587,18 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23A-T3-pfK">
+                                                    <rect key="frame" x="17" y="32" width="4" height="17"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="KeW-Q0-4p2">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fI7-zu-zey" firstAttribute="leading" secondItem="skT-Ne-Am6" secondAttribute="leading" constant="17" id="19k-ry-ZoN"/>
+                                                <constraint firstItem="23A-T3-pfK" firstAttribute="top" secondItem="X5K-yv-wRP" secondAttribute="bottom" constant="10" id="8n4-tm-cWW"/>
                                                 <constraint firstItem="gOF-WL-C9b" firstAttribute="leading" secondItem="X5K-yv-wRP" secondAttribute="trailing" constant="8" id="Bk1-NG-rkO"/>
                                                 <constraint firstAttribute="bottom" secondItem="fI7-zu-zey" secondAttribute="bottom" constant="3" id="NPL-Po-npd"/>
                                                 <constraint firstAttribute="trailing" secondItem="OlO-Sd-TIe" secondAttribute="trailing" constant="17" id="PMX-hR-Cjc"/>
@@ -592,6 +611,7 @@
                                                 <constraint firstItem="QH3-X1-vJD" firstAttribute="leading" secondItem="ksp-vO-5Pn" secondAttribute="trailing" constant="8" id="emP-AJ-Tt4"/>
                                                 <constraint firstItem="X5K-yv-wRP" firstAttribute="leading" secondItem="skT-Ne-Am6" secondAttribute="leading" constant="17" id="fFA-Ag-jHp"/>
                                                 <constraint firstAttribute="trailing" secondItem="QH3-X1-vJD" secondAttribute="trailing" constant="17" id="hM6-xt-Sgj"/>
+                                                <constraint firstItem="23A-T3-pfK" firstAttribute="leading" secondItem="skT-Ne-Am6" secondAttribute="leading" constant="19" id="ljU-Yr-UhK"/>
                                                 <constraint firstAttribute="bottom" secondItem="hKH-uf-wNR" secondAttribute="bottom" constant="7" id="rdk-QT-uI0"/>
                                                 <constraint firstAttribute="bottom" secondItem="VGt-Tb-1iB" secondAttribute="bottom" constant="3" id="uk0-lk-l3J"/>
                                                 <constraint firstItem="ksp-vO-5Pn" firstAttribute="leading" secondItem="wvB-S7-7BZ" secondAttribute="trailing" constant="8" id="v0H-Iw-FA9"/>
@@ -606,28 +626,43 @@
                                 <rect key="frame" x="0.0" y="0.0" width="951" height="472"/>
                                 <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" id="dDU-NH-Hrn"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DUn-HY-Jtk">
+                                <rect key="frame" x="14" y="560" width="91" height="32"/>
+                                <buttonCell key="cell" type="push" title="Exit App" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ifu-cO-6Qa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="exitApp:" target="aCh-VH-OyI" id="6KM-Uj-dVQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="E4B-6W-vAH" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" constant="136" id="0My-ga-n6c"/>
                             <constraint firstItem="380-Lw-G58" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" constant="20" id="12G-ja-4n7"/>
                             <constraint firstAttribute="bottom" secondItem="E4B-6W-vAH" secondAttribute="bottom" id="FvM-7n-AdM"/>
+                            <constraint firstItem="DUn-HY-Jtk" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" constant="20" id="amk-9v-F1F"/>
                             <constraint firstAttribute="trailing" secondItem="E4B-6W-vAH" secondAttribute="trailing" id="iR1-j4-wjL"/>
                             <constraint firstItem="E4B-6W-vAH" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" id="lEs-Hq-Zof"/>
                             <constraint firstItem="380-Lw-G58" firstAttribute="leading" secondItem="co7-TS-CbJ" secondAttribute="leading" constant="20" id="mkx-ql-jDb"/>
                             <constraint firstAttribute="trailing" secondItem="380-Lw-G58" secondAttribute="trailing" constant="20" id="nN9-IG-IAZ"/>
+                            <constraint firstItem="DUn-HY-Jtk" firstAttribute="top" secondItem="co7-TS-CbJ" secondAttribute="top" constant="20" id="sRU-yQ-5Uq"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundCheckbox" destination="hKH-uf-wNR" id="dBE-Fc-kRE"/>
-                        <outlet property="delLanAtIndexTextField" destination="i7z-mQ-cdz" id="EPJ-4t-PfS"/>
-                        <outlet property="delRanLanCountTextField" destination="lVn-tP-dlx" id="n4y-kF-PZM"/>
-                        <outlet property="filePathTextField" destination="gOF-WL-C9b" id="0tY-D7-Xjq"/>
-                        <outlet property="imageIndexTextField" destination="ksp-vO-5Pn" id="9dA-Ky-AQi"/>
-                        <outlet property="locationTextField" destination="P1M-tm-V4y" id="22Y-Nx-ZEp"/>
+                        <outlet property="backgroundCheckbox" destination="hKH-uf-wNR" id="aWG-Ik-MfI"/>
+                        <outlet property="delLanAtIndexTextField" destination="i7z-mQ-cdz" id="k63-Cl-PX0"/>
+                        <outlet property="delRanLanCountTextField" destination="lVn-tP-dlx" id="KN0-G4-fI0"/>
+                        <outlet property="detailsImageView" destination="E4B-6W-vAH" id="hIh-VR-PhE"/>
+                        <outlet property="filePathTextField" destination="gOF-WL-C9b" id="cNM-v9-UM6"/>
+                        <outlet property="imageIndexTextField" destination="ksp-vO-5Pn" id="1oq-Pe-u4F"/>
+                        <outlet property="indexTextField" destination="dqE-a5-zKw" id="TnS-Rw-6un"/>
+                        <outlet property="locationTextField" destination="P1M-tm-V4y" id="ugf-Kq-cfN"/>
+                        <outlet property="resolutionLabel" destination="23A-T3-pfK" id="Y4Y-O0-bRm"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="206.5" y="450"/>
+            <point key="canvasLocation" x="213.5" y="450"/>
         </scene>
     </scenes>
 </document>

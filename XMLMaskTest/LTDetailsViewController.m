@@ -26,7 +26,7 @@
     NSPoint scrollPoint;
     BOOL isCommandKey;
     int selectionRadius;
-    
+    NSColorPanel *colorPanel;
 }
 @end
 
@@ -36,7 +36,6 @@ void* const ColorPanelContext = (void*)1001;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resizeWindow) name:NSWindowDidResizeNotification object:nil];
     [self.detailsImageView setImage:self.imagePath];
     imageWidth = CGImageGetWidth(self.detailsImageView.image);
     imageHeight = CGImageGetHeight(self.detailsImageView.image);
@@ -47,7 +46,7 @@ void* const ColorPanelContext = (void*)1001;
 
 -(void)viewWillAppear {
     [super viewWillAppear];
-    NSColorPanel *colorPanel = [NSColorPanel sharedColorPanel];
+    colorPanel = [[NSColorPanel alloc] init];
     [colorPanel addObserver:self forKeyPath:@"color" options:0 context:ColorPanelContext];
     LTNumberFormatter *formatter = [[LTNumberFormatter alloc] init];
     [self.indexTextField setFormatter:formatter];
@@ -90,13 +89,7 @@ void* const ColorPanelContext = (void*)1001;
     [[NSCursor arrowCursor] set];
 }
 
--(void)resizeWindow {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CGRect frame = self.presentingViewController.view.frame;
-        [self.view.window setFrame:frame display:YES animate:YES];
-        self.view.frame = frame;
-    });
-}
+
 
 - (IBAction)exitApp:(id)sender {
     

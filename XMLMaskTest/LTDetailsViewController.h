@@ -22,7 +22,7 @@
 @property (weak) IBOutlet NSTextField *resolutionLabel;
 @property (weak) IBOutlet NSTextField *filePathTextField;
 
-@property (weak) IBOutlet NSLayoutConstraint *topSpaceConstraint;
+
 @property (weak) IBOutlet NSTextField *indexTextField;
 @property (weak) IBOutlet NSTextField *locationTextField;
 

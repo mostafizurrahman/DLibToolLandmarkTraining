@@ -100,7 +100,9 @@
     }
 }
 -(void)setImage:(NSString *)imagePath{
-    [self openImageURL:[NSURL fileURLWithPath:imagePath]];
+    if(imagePath) {
+        [self openImageURL:[NSURL fileURLWithPath:imagePath]];
+    }
 }
 
 -(void)updateIndex:(int)value {
