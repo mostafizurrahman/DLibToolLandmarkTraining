@@ -328,7 +328,6 @@ void* const ColorPanelContext = (void*)1000;
 -(void)landmarkClickedAtPoint:(NSPoint)clickedPoint{
     if (!isProcessing)
     {
-        //        scrollPoint = clickedPoint;//[self.detailsImageView convertImagePointToViewPoint:clickedPoint];
         isProcessing = YES;
         BOOL isEdited = NO;
         CGRect boundingRect = CGRectMake(clickedPoint.x - selectionRadius / 2, imageHeight - clickedPoint.y -  selectionRadius / 2, selectionRadius, selectionRadius);
@@ -359,36 +358,6 @@ void* const ColorPanelContext = (void*)1000;
             //draw
             [self drawImage];
         }
-        /*long topdist = (clickedPoint.y - imageHeight + self.faceLandmark.box.top) ;
-         topdist = topdist < 0 ? 1000 : topdist;
-         long leftdist = (self.faceLandmark.box.left - clickedPoint.x);
-         leftdist = leftdist < 0 ? 1000 : leftdist;
-         //        height - faceLandmarks.box.height - faceLandmarks.box.top
-         
-         long rightdist = (clickedPoint.x - self.faceLandmark.box.left - self.faceLandmark.box.width);
-         rightdist = rightdist < 0 ? 1000 : rightdist;
-         long bottomdist = (imageHeight - self.faceLandmark.box.height - self.faceLandmark.box.top ) - clickedPoint.y;
-         bottomdist = bottomdist < 0 ? 1000 : bottomdist;
-         long array[] = {leftdist,topdist, rightdist, bottomdist};
-         long min = array[0];
-         for(int i = 1; i < 4; i++){
-         if(array[i] < min ){
-         min = array[i];
-         }
-         }
-         if(min == array[0]){ // left
-         self.faceLandmark.box.left -= min;
-         }
-         else if(min == array[1]){ // top
-         self.faceLandmark.box.top -= min;
-         }
-         else if(min == array[2]){
-         self.faceLandmark.box.left += min;
-         }
-         else if(min == array[3]){
-         self.faceLandmark.box.top += min;
-         }
-         [self drawImage];*/
     }
     
 }
