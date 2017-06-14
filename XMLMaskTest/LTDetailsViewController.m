@@ -31,7 +31,7 @@
 @end
 
 @implementation LTDetailsViewController
-void* const ColorPanelContext = (void*)1001;
+void* const ColorPanelContext = (void*)1000;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,7 +46,7 @@ void* const ColorPanelContext = (void*)1001;
 
 -(void)viewWillAppear {
     [super viewWillAppear];
-    colorPanel = [[NSColorPanel alloc] init];
+    colorPanel = [NSColorPanel sharedColorPanel];
     [colorPanel addObserver:self forKeyPath:@"color" options:0 context:ColorPanelContext];
     LTNumberFormatter *formatter = [[LTNumberFormatter alloc] init];
     [self.indexTextField setFormatter:formatter];
