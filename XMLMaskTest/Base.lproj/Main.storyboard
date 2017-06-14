@@ -427,10 +427,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="247" id="I73-wP-yxe"/>
                                                     </constraints>
-                                                    <buttonCell key="cell" type="push" title="Reset Current Image Landmarks" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V1T-94-BZ0">
+                                                    <buttonCell key="cell" type="push" title="Set Landmark Index to Clicked Point" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V1T-94-BZ0">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="resetCurrentImage:" target="aCh-VH-OyI" id="wKN-VS-GA6"/>
+                                                    </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlw-Kt-uh7">
                                                     <rect key="frame" x="553" y="6" width="259" height="17"/>
@@ -443,14 +446,6 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exv-kr-qNG">
-                                                    <rect key="frame" x="273" y="6" width="272" height="14"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Landmark index will be jumped to mouse clik point" id="LZV-W2-xa8">
-                                                        <font key="font" size="11" name="STHeitiSC-Light"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sof-Rc-Rf1" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" constant="1" id="1PY-al-QA2"/>
@@ -458,10 +453,8 @@
                                                 <constraint firstItem="i7z-mQ-cdz" firstAttribute="leading" secondItem="dzo-ds-InQ" secondAttribute="trailing" constant="8" id="4qQ-8C-KqN"/>
                                                 <constraint firstItem="lGE-iX-Gbu" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="6Jd-xy-PEs"/>
                                                 <constraint firstItem="H3Y-rc-7W6" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="18" id="6vq-dD-NlK"/>
-                                                <constraint firstItem="exv-kr-qNG" firstAttribute="leading" secondItem="ui6-8g-ip2" secondAttribute="trailing" constant="11" id="7v9-dB-3LR"/>
                                                 <constraint firstItem="ui6-8g-ip2" firstAttribute="leading" secondItem="htE-Dp-tAt" secondAttribute="leading" constant="17" id="9Tf-mE-swc"/>
                                                 <constraint firstItem="i7z-mQ-cdz" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="C0O-2N-Hhj"/>
-                                                <constraint firstAttribute="bottom" secondItem="exv-kr-qNG" secondAttribute="bottom" constant="6" id="D5c-8N-jyf"/>
                                                 <constraint firstItem="dzo-ds-InQ" firstAttribute="top" secondItem="htE-Dp-tAt" secondAttribute="top" id="E7A-a2-g0D"/>
                                                 <constraint firstItem="H3Y-rc-7W6" firstAttribute="top" secondItem="sof-Rc-Rf1" secondAttribute="bottom" constant="10" id="K1w-5m-SW3"/>
                                                 <constraint firstAttribute="trailing" secondItem="uHx-uv-Ioi" secondAttribute="trailing" constant="17" id="SQd-oe-3r9"/>

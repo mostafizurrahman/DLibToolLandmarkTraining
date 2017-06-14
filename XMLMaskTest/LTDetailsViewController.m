@@ -66,27 +66,41 @@ void* const ColorPanelContext = (void*)1001;
 }
 
 - (IBAction)zoomIn:(id)sender {
-    self.detailsImageView.shouldDragImage = YES;
-    [self.detailsImageView zoomImage:1];
-    [[NSCursor arrowCursor] set];
+    if(self.faceLandmark )
+    {
+        self.detailsImageView.shouldDragImage = YES;
+        [self.detailsImageView zoomImage:1];
+        [[NSCursor arrowCursor] set];
+    }
 }
 
 - (IBAction)zoomOut:(id)sender {
-    self.detailsImageView.shouldDragImage = YES;
-    [self.detailsImageView zoomImage:0];
-    [[NSCursor arrowCursor] set];
+    if(self.faceLandmark )
+    {
+        self.detailsImageView.shouldDragImage = YES;
+        [self.detailsImageView zoomImage:0];
+        [[NSCursor arrowCursor] set];
+    }
 }
 
 - (IBAction)aspectZoom:(id)sender {
-    self.detailsImageView.shouldDragImage = YES;
-    [self.detailsImageView zoomImage:2];
-    [[NSCursor arrowCursor] set];
+    if(self.faceLandmark )
+    {
+        
+        self.detailsImageView.shouldDragImage = YES;
+        [self.detailsImageView zoomImage:2];
+        [[NSCursor arrowCursor] set];
+    }
 }
 
 - (IBAction)fitZoom:(id)sender {
-    self.detailsImageView.shouldDragImage = YES;
-    [self.detailsImageView zoomImage:3];
-    [[NSCursor arrowCursor] set];
+    if(self.faceLandmark )
+    {
+        
+        self.detailsImageView.shouldDragImage = YES;
+        [self.detailsImageView zoomImage:3];
+        [[NSCursor arrowCursor] set];
+    }
 }
 
 
@@ -110,8 +124,11 @@ void* const ColorPanelContext = (void*)1001;
         self.detailsImageView.backgroundColor = color;
         return;
     }
-    NSColor *dotColor = [NSColor colorWithCalibratedRed:1.0f - color.redComponent  green: 1.0f - color.blueComponent blue: 1.0f - color.redComponent alpha:1.0];
-    [self drawImageInView:color dotColor:dotColor];
+    if(self.faceLandmark )
+    {
+        NSColor *dotColor = [NSColor colorWithCalibratedRed:1.0f - color.redComponent  green: 1.0f - color.blueComponent blue: 1.0f - color.redComponent alpha:1.0];
+        [self drawImageInView:color dotColor:dotColor];
+    }
 }
 
 - (IBAction)showColorPanel:(id)sender {
@@ -205,6 +222,7 @@ void* const ColorPanelContext = (void*)1001;
 
 
 - (IBAction)readNextImage:(id)sender {
+    if(!self.faceLandmark ) return;
     [self.detailsImageView updateIndex:1];
     self.indexTextField.stringValue = [NSString stringWithFormat:@"%ld",[self.detailsImageView getCurrentIndex]];
     previousLandmark.landmarkIndex = -1;
@@ -214,6 +232,7 @@ void* const ColorPanelContext = (void*)1001;
 }
 
 - (IBAction)resetCurrentImage:(id)sender {
+    if(!self.faceLandmark ) return;
     long index = [self.indexTextField.stringValue integerValue];
     for(Landmarks *landmark in self.faceLandmark.landmarksArray){
         if(index == landmark.landmarkIndex){
