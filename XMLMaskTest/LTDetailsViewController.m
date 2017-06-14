@@ -247,6 +247,7 @@ void* const ColorPanelContext = (void*)1001;
     }
 }
 - (IBAction)readPreviousImage:(id)sender {
+    if(!self.faceLandmark ) return;
     [self.detailsImageView updateIndex:-1];
     previousLandmark.landmarkIndex = -1;
     [self.detailsImageView loadNextImage];
@@ -256,6 +257,7 @@ void* const ColorPanelContext = (void*)1001;
 - (void)keyDown:(NSEvent *)theEvent {
     
     [self interpretKeyEvents:[NSArray arrayWithObject:theEvent]];
+    if(!self.faceLandmark ) return;
     if([theEvent keyCode] == 53 && previousLandmark.landmarkIndex != -1){
         currentLandmark.xCoodinate = previousLandmark.xCoodinate;
         currentLandmark.yCoodinate = previousLandmark.yCoodinate;
@@ -388,6 +390,7 @@ void* const ColorPanelContext = (void*)1001;
 }
 
 - (IBAction)jumpLandmarkIndex:(id)sender {
+    if(!self.faceLandmark ) return;
     long index = [((NSTextField *)sender).stringValue integerValue];
     for(Landmarks *landmark in self.faceLandmark.landmarksArray){
         if(landmark.landmarkIndex == index){
@@ -403,15 +406,18 @@ void* const ColorPanelContext = (void*)1001;
 }
 
 - (IBAction)increament:(id)sender {
+    if(!self.faceLandmark ) return;
     selectionRadius = ++selectionRadius > 20 ? 20 : selectionRadius;
 }
 
 
 - (IBAction)decreament:(id)sender {
+    if(!self.faceLandmark ) return;
     selectionRadius = --selectionRadius < 6 ? 6 : selectionRadius;
 }
 
 - (IBAction)selectIndex:(id)sender {
+    if(!self.faceLandmark ) return;
     long index = [self.imageIndexTextField.stringValue integerValue];
     if(![self.detailsImageView isIndexOutOfBound:index]){
         [self.detailsImageView jumpToIndex:index];
@@ -422,6 +428,7 @@ void* const ColorPanelContext = (void*)1001;
 
 
 - (IBAction)deleteLandmark:(id)sender {
+    if(!self.faceLandmark ) return;
     const int index = [self.delLanAtIndexTextField.stringValue intValue];
     for(Landmarks *landmark in _faceLandmark.landmarksArray){
         if(landmark.landmarkIndex == index){
@@ -433,7 +440,7 @@ void* const ColorPanelContext = (void*)1001;
 }
 
 - (IBAction)deleteRandomRange:(id)sender {
-    
+    if(!self.faceLandmark ) return;
     int deleteCount = [self.delRanLanCountTextField intValue];
     [self.detailsImageView deleteLandmarkRandomly:deleteCount];
 }
