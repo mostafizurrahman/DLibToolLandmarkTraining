@@ -9,7 +9,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F944BADB-8595-48C0-AFD2-1C2B2B24DC28",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "FA1C9475B3E5E2B39BD9C898CBCF0DC10D78F25B" : "LandmarkTrainingTool\/",
+    "FA1C9475B3E5E2B39BD9C898CBCF0DC10D78F25B" : "DLibToolLandmarkTraining\/",
     "3BB535F5A539609B32ADF7EA2B4718394527AE3B" : "..\/..\/facedection_bitbucket\/landmarktesting_osx"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "LandmarkTesting",
